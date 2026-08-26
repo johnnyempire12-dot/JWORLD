@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050607">
+  <title>JWORLD — One Platform • Endless Worlds</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <button class="brand" data-view="home">
+      <span class="brand-mark">J</span>
+      <span><b>JWORLD</b><small>ONE PLATFORM • ENDLESS WORLDS</small></span>
+    </button>
+    <div class="search-wrap">
+      <input id="globalSearch" placeholder="Search products, movies, books, apps..." autocomplete="off">
+      <button id="searchBtn">⌕</button>
+    </div>
+    <nav class="top-actions">
+      <button data-view="communities">💬 <span>Chat</span></button>
+      <button data-view="notifications" class="badge-btn">🔔 <i id="notifBadge">3</i><span>Notifications</span></button>
+      <button data-view="cart" class="badge-btn">🛒 <i id="cartBadge">0</i><span>Cart</span></button>
+      <button data-view="account">👤 <span>Johnny</span></button>
+    </nav>
+  </header>
+
+  <nav class="mainnav" id="mainNav">
+    <button class="active" data-view="home">⌂<span>Home</span></button>
+    <button data-view="marketplace">🛍️<span>Marketplace</span></button>
+    <button data-view="movies">🎬<span>Movies & Series</span></button>
+    <button data-view="apps">🎮<span>Apps & Games</span></button>
+    <button data-view="music">🎵<span>Music</span></button>
+    <button data-view="books">📚<span>Books</span></button>
+    <button data-view="files">📁<span>Files</span></button>
+    <button data-view="communities">👥<span>Communities</span></button>
+    <button data-view="news">📰<span>News</span></button>
+    <button data-view="library">📖<span>Library</span></button>
+  </nav>
+
+  <main id="app"></main>
+
+  <footer>
+    <div class="footer-brand"><span class="brand-mark">J</span><b>JWORLD</b></div>
+    <p>One Platform • Endless Worlds</p>
+    <div class="footer-links">
+      <button data-view="account">About</button><button data-view="support">Support</button>
+      <button data-view="account">Privacy</button><button data-view="account">Terms</button>
+    </div>
+    <small>© 2026 JWORLD. All rights reserved.</small>
+  </footer>
+
+  <div id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
