@@ -1,57 +1,114 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#050607">
-  <title>JWORLD — One Platform • Endless Worlds</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#05080b">
+<title>JWORLD — One Platform • Endless Worlds</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="app">
   <header class="topbar">
-    <button class="icon-btn" id="menuBtn" aria-label="Menu">☰</button>
-    <button class="brand" data-view="home">
-      <span class="brand-mark">J</span>
-      <span><b>JWORLD</b><small>ONE PLATFORM • ENDLESS WORLDS</small></span>
-    </button>
-    <div class="search-wrap">
-      <input id="globalSearch" placeholder="Search products, movies, books, apps..." autocomplete="off">
-      <button id="searchBtn">⌕</button>
+    <button class="icon-btn menu" aria-label="Menu">☰</button>
+    <div class="brand">
+      <div class="brand-mark">♛</div>
+      <div><div class="brand-name"><span>J</span>WORLD</div><div class="brand-sub">ONE PLATFORM • ENDLESS WORLDS</div></div>
     </div>
-    <nav class="top-actions">
-      <button data-view="communities">💬 <span>Chat</span></button>
-      <button data-view="notifications" class="badge-btn">🔔 <i id="notifBadge">3</i><span>Notifications</span></button>
-      <button data-view="cart" class="badge-btn">🛒 <i id="cartBadge">0</i><span>Cart</span></button>
-      <button data-view="account">👤 <span>Johnny</span></button>
-    </nav>
+    <div class="search"><span>⌕</span><input id="globalSearch" placeholder="Search for products, movies, books, apps..."><button>⌕</button></div>
+    <div class="top-actions">
+      <button>💬<small>Chat</small></button>
+      <button class="badge-btn">🔔<i>3</i><small>Notifications</small></button>
+      <button class="badge-btn">🛒<i>2</i><small>Cart</small></button>
+      <button class="profile">👤<small>Johnny⌄</small></button>
+    </div>
   </header>
 
-  <nav class="mainnav" id="mainNav">
-    <button class="active" data-view="home">⌂<span>Home</span></button>
-    <button data-view="marketplace">🛍️<span>Marketplace</span></button>
-    <button data-view="movies">🎬<span>Movies & Series</span></button>
-    <button data-view="apps">🎮<span>Apps & Games</span></button>
-    <button data-view="music">🎵<span>Music</span></button>
-    <button data-view="books">📚<span>Books</span></button>
-    <button data-view="files">📁<span>Files</span></button>
-    <button data-view="communities">👥<span>Communities</span></button>
-    <button data-view="news">📰<span>News</span></button>
-    <button data-view="library">📖<span>Library</span></button>
+  <nav class="mainnav" id="mainnav">
+    <a class="active" href="#home">🏠<span>Home</span></a>
+    <a href="#marketplace">🛍️<span>Marketplace</span></a>
+    <a href="#movies">🎬<span>Movies & Series</span></a>
+    <a href="#apps">🎮<span>Apps & Games</span></a>
+    <a href="#music">🎵<span>Music</span></a>
+    <a href="#books">📚<span>Books</span></a>
+    <a href="#files">📁<span>Files</span></a>
+    <a href="#communities">👥<span>Communities</span></a>
+    <a href="#news">📰<span>News</span></a>
+    <a href="#library">📖<span>Library</span></a>
   </nav>
 
-  <main id="app"></main>
+  <main id="home">
+    <section class="hero">
+      <img src="assets/hero.png" alt="">
+      <div class="hero-overlay"></div>
+      <div class="hero-copy">
+        <div class="eyebrow">WELCOME TO</div>
+        <h1><span>J</span>WORLD</h1>
+        <h2>Your Ultimate Digital Kingdom</h2>
+        <p>Shop, stream, download and connect —<br>Everything you need in one powerful platform.</p>
+        <div class="hero-buttons"><button class="gold" onclick="toast('Explore JWORLD')">Explore Now →</button><button onclick="toast('Upload Center')">Upload Content ☁</button></div>
+      </div>
+      <div class="hero-tag">More<br>Than Just<br>A Platform...<br><em>It's a World.</em></div>
+    </section>
 
-  <footer>
-    <div class="footer-brand"><span class="brand-mark">J</span><b>JWORLD</b></div>
-    <p>One Platform • Endless Worlds</p>
-    <div class="footer-links">
-      <button data-view="account">About</button><button data-view="support">Support</button>
-      <button data-view="account">Privacy</button><button data-view="account">Terms</button>
-    </div>
-    <small>© 2026 JWORLD. All rights reserved.</small>
-  </footer>
+    <section class="stats">
+      <div>🛍️ <b>1000+</b><small>Products</small></div><div>👥 <b>50K+</b><small>Users</small></div><div>🏪 <b>500+</b><small>Sellers</small></div><div>☁️ <b>10K+</b><small>Downloads Today</small></div><div>🎧 <b>24/7</b><small>Support</small></div>
+      <div class="wa">🟢 +234 916 938 5002<br><small>Chat with us on WhatsApp</small></div>
+    </section>
 
-  <div id="toast"></div>
-  <script src="app.js"></script>
+    <section class="panel worlds">
+      <div class="section-head"><div><h2>EXPLORE OUR WORLDS</h2><p>One platform. Endless possibilities.</p></div><a href="#">View All Sections →</a></div>
+      <div class="world-grid">
+        <a class="world blue" href="#marketplace"><b>🛒</b><strong>MARKETPLACE</strong><small>Shop products from trusted sellers.</small><button>Explore →</button></a>
+        <a class="world red" href="#movies"><b>🎬</b><strong>MOVIES & SERIES</strong><small>Watch and download movies & series.</small><button>Explore →</button></a>
+        <a class="world green" href="#apps"><b>🎮</b><strong>APPS & GAMES</strong><small>Download the best apps & games.</small><button>Explore →</button></a>
+        <a class="world purple" href="#music"><b>🎵</b><strong>MUSIC</strong><small>Stream and download your favorite music.</small><button>Explore →</button></a>
+        <a class="world gold" href="#books"><b>📚</b><strong>BOOKS</strong><small>Buy and download amazing books.</small><button>Explore →</button></a>
+        <a class="world cyan" href="#files"><b>📁</b><strong>FILES</strong><small>Get important files, documents & more.</small><button>Explore →</button></a>
+        <a class="world pink" href="#communities"><b>👥</b><strong>COMMUNITIES</strong><small>Join, chat and build with others.</small><button>Explore →</button></a>
+        <a class="world teal" href="#news"><b>📰</b><strong>NEWS</strong><small>Latest news and updates.</small><button>Explore →</button></a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head"><div><h2>TRENDING & FEATURED</h2><p>Handpicked for you</p></div><div class="tabs"><button class="selected">Trending</button><button>New</button><button>Popular</button><button>Recommended</button></div></div>
+      <div class="cards">
+        <article class="card"><img src="assets/movie.jpg"><label>MOVIE</label><h3>The Batman</h3><small>Action · Thriller</small><p>⭐ 4.8 (12.5K)</p><b>$4.99</b><button onclick="toast('Opening The Batman')">Watch Now</button></article>
+        <article class="card"><img src="assets/game.jpg"><label>GAME</label><h3>Call of Duty: Modern Warfare III</h3><small>Action · Shooter</small><p>⭐ 4.6 (8.9K)</p><b>$59.99</b><button onclick="toast('Opening game')">Buy Now</button></article>
+        <article class="card"><img src="assets/app.jpg"><label>APP</label><h3>AI Photo Editor Pro</h3><small>Tools · Photo</small><p>⭐ 4.7 (5.2K)</p><b>$2.99</b><button onclick="toast('Starting download')">Download</button></article>
+        <article class="card"><img src="assets/book.jpg"><label>BOOK</label><h3>Atomic Habits</h3><small>James Clear</small><p>⭐ 4.8 (25.4K)</p><b>$9.99</b><button onclick="toast('Opening book')">Buy Now</button></article>
+        <article class="card"><img src="assets/music.jpg"><label>MUSIC</label><h3>Good Vibes Only</h3><small>Various Artists</small><p>⭐ 4.6 (9.8K)</p><b>$1.99</b><button onclick="toast('Playing music')">Listen Now</button></article>
+        <article class="card"><img src="assets/file.jpg"><label>FILE</label><h3>Windows 11 Pro</h3><small>Software · Tools</small><p>⭐ 4.5 (6.3K)</p><b>$19.99</b><button onclick="toast('Opening file')">Download</button></article>
+      </div>
+    </section>
+
+    <section class="split">
+      <div class="panel">
+        <div class="section-head"><div><h2>RECOMMENDED FOR YOU</h2><p>Based on your activity</p></div></div>
+        <div class="mini-grid">
+          <div class="mini"><img src="assets/movie.jpg"><strong>Dune: Part Two</strong><small>Movie · Sci-Fi</small><span>⭐ 4.8</span></div>
+          <div class="mini"><img src="assets/game.jpg"><strong>The Last of Us</strong><small>Series · Drama</small><span>⭐ 4.9</span></div>
+          <div class="mini"><img src="assets/music.jpg"><strong>Spotify Premium</strong><small>App · Music</small><span>⭐ 4.7</span></div>
+          <div class="mini"><img src="assets/book.jpg"><strong>The 7 Habits...</strong><small>Book · Self Help</small><span>⭐ 4.6</span></div>
+          <div class="mini"><img src="assets/file.jpg"><strong>GTA V</strong><small>Game · Action</small><span>⭐ 4.8</span></div>
+        </div>
+      </div>
+      <div class="community-cta panel" id="communities">
+        <div class="discord">◉</div><div><h2>Join Our Communities</h2><p>Chat, share, make friends and be part of something bigger.</p></div><button class="gold" onclick="toast('Opening Communities')">Explore Communities →</button>
+      </div>
+    </section>
+
+    <section class="quick-row">
+      <div class="panel"><h2>⚡ Quick Access</h2><p>Get to what you need fast.</p><div class="quick-grid"><button>🧾<small>My Orders</small></button><button>⬇️<small>Downloads</small></button><button>♡<small>Wishlist</small></button><button>◉<small>Watchlist</small></button><button>🎵<small>Playlists</small></button><button>💬<small>Messages</small></button><button>👤<small>Profile</small></button><button>⚙️<small>Settings</small></button></div></div>
+      <div class="panel creator"><h2>For Creators & Sellers</h2><p>Sell your products, content and services on JWORLD.</p><button class="gold" onclick="toast('Seller onboarding')">Start Selling →</button></div>
+      <div class="panel"><h2>🛡️ Security & Support</h2><p>Your safety and satisfaction are our priority.</p><button onclick="toast('Support center')">Contact Support →</button></div>
+      <div class="panel"><h2>📖 Your Library</h2><p>All your purchased, saved and watched content in one place.</p><button onclick="toast('Opening Library')">Open Library →</button></div>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand"><span>♛</span> JWORLD <small>ONE PLATFORM • ENDLESS WORLDS</small></div><div class="footer-links"><a>About</a><a>Services</a><a>Support</a><a>Contact</a><a>Privacy Policy</a><a>Terms of Service</a></div><div>© 2026 JWORLD. All rights reserved.</div></footer>
+</div>
+<div id="toast"></div>
+<script src="app.js"></script>
 </body>
 </html>
