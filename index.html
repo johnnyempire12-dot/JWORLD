@@ -6,21 +6,42 @@
 <title>JWORLD</title>
 <style>
 :root{--bg:#02070c;--gold:#f4b915;--line:#123b57}
-*{box-sizing:border-box}html,body{margin:0;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}body{overflow-x:hidden}
-.page{width:min(1536px,100vw);margin:0 auto;background:#000}
-.header{position:relative;width:100%;line-height:0}.header img{width:100%;height:auto;display:block}.body{display:grid;grid-template-columns:211px minmax(0,1fr);align-items:start}.side{position:relative;line-height:0}.side img{width:100%;height:auto;display:block}.main{min-width:0;background:#000;padding:0 0 0 0}.mainimg{position:relative;line-height:0}.mainimg>img{width:100%;height:auto;display:block}.bottom-grid{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:10px;padding:10px 0 10px}.panel{position:relative;line-height:0;min-width:0}.panel img{width:100%;height:auto;display:block;border-radius:10px}.footer{position:relative;line-height:0}.footer img{width:100%;height:auto;display:block}
-.hot{position:absolute;z-index:5;background:transparent;border:0;padding:0;margin:0;cursor:pointer;border-radius:6px}.hot:focus-visible{outline:2px solid #ffd21a;outline-offset:2px}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+body{width:100vw;height:100vh;height:100dvh}
+.page{width:100vw;height:100vh;height:100dvh;margin:0;background:#000;display:grid;grid-template-rows:8vh minmax(0,87vh) 5vh;overflow:hidden}
+.header,.footer,.side,.mainimg,.panel{position:relative;line-height:0;overflow:hidden}
+.header img,.footer img,.side img,.mainimg>img,.panel img{width:100%;height:100%;display:block;object-fit:fill}
+.body{min-height:0;display:grid;grid-template-columns:14% minmax(0,86%);align-items:stretch;overflow:hidden}
+.side{min-width:0}.main{min-width:0;min-height:0;background:#000;display:grid;grid-template-rows:minmax(0,72%) minmax(0,28%);overflow:hidden}
+.mainimg{min-height:0}.bottom-grid{min-height:0;display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:8px;padding:6px 0 4px;overflow:hidden}
+.panel{min-width:0;min-height:0}.panel img{border-radius:10px}
+.hot{position:absolute;z-index:5;background:transparent;border:0;padding:0;margin:0;cursor:pointer;border-radius:6px;touch-action:manipulation}
+.hot:focus-visible{outline:2px solid #ffd21a;outline-offset:2px}
 /* header */
 .h-search{left:25.8%;top:5%;width:42%;height:70%}.h-chat{left:72.5%;top:5%;width:4%;height:80%}.h-notify{left:77.8%;top:5%;width:4%;height:80%}.h-download{left:82.8%;top:5%;width:4%;height:80%}.h-cart{left:87.8%;top:5%;width:4%;height:80%}.h-profile{left:92%;top:2%;width:7%;height:90%}
-/* sidebar, relative to 211x899 crop */
-.s-home{left:2%;top:1.2%;width:95%;height:4.4%}.s-market{left:2%;top:6.0%;width:95%;height:4.4%}.s-movies{left:2%;top:10.6%;width:95%;height:4.4%}.s-apps{left:2%;top:15.2%;width:95%;height:4.4%}.s-music{left:2%;top:19.8%;width:95%;height:4.4%}.s-books{left:2%;top:24.4%;width:95%;height:4.4%}.s-files{left:2%;top:29.0%;width:95%;height:4.4%}.s-community{left:2%;top:33.7%;width:95%;height:4.4%}.s-news{left:2%;top:38.3%;width:95%;height:4.4%}.s-library{left:2%;top:42.9%;width:95%;height:4.4%}.s-account{left:2%;top:47.5%;width:95%;height:4.4%}.s-support{left:2%;top:52.1%;width:95%;height:4.4%}.s-premium{left:5%;top:59.5%;width:90%;height:22%}
-/* main crop: original x=211..1230, y=67..866 */
+/* sidebar */
+.s-home{left:2%;top:1.2%;width:95%;height:4.4%}.s-market{left:2%;top:6%;width:95%;height:4.4%}.s-movies{left:2%;top:10.6%;width:95%;height:4.4%}.s-apps{left:2%;top:15.2%;width:95%;height:4.4%}.s-music{left:2%;top:19.8%;width:95%;height:4.4%}.s-books{left:2%;top:24.4%;width:95%;height:4.4%}.s-files{left:2%;top:29%;width:95%;height:4.4%}.s-community{left:2%;top:33.7%;width:95%;height:4.4%}.s-news{left:2%;top:38.3%;width:95%;height:4.4%}.s-library{left:2%;top:42.9%;width:95%;height:4.4%}.s-account{left:2%;top:47.5%;width:95%;height:4.4%}.s-support{left:2%;top:52.1%;width:95%;height:4.4%}.s-premium{left:5%;top:59.5%;width:90%;height:22%}
+/* main */
 .m-hero{left:2%;top:1.5%;width:96%;height:31%}.m-cat1{left:2%;top:35%;width:10%;height:9%}.m-cat2{left:13.7%;top:35%;width:10%;height:9%}.m-cat3{left:25.2%;top:35%;width:10%;height:9%}.m-cat4{left:36.7%;top:35%;width:10%;height:9%}.m-cat5{left:48.2%;top:35%;width:10%;height:9%}.m-cat6{left:59.6%;top:35%;width:10%;height:9%}.m-cat7{left:71%;top:35%;width:10%;height:9%}.m-cat8{left:82.3%;top:35%;width:6%;height:9%}.m-cat9{left:88.8%;top:35%;width:5.5%;height:9%}.m-feature1{left:2%;top:52%;width:16%;height:20%}.m-feature2{left:20%;top:52%;width:16%;height:20%}.m-feature3{left:38%;top:52%;width:16%;height:20%}.m-feature4{left:56%;top:52%;width:16%;height:20%}.m-feature5{left:74%;top:52%;width:10%;height:20%}.m-feature6{left:85%;top:52%;width:10%;height:20%}.m-reco{left:2%;top:79%;width:66%;height:19%}.m-watch{left:70%;top:79%;width:28%;height:19%}
-/* bottom panels */
 .p-community{left:2%;top:2%;width:96%;height:96%}.p-quick{left:2%;top:2%;width:96%;height:96%}.p-premium{left:2%;top:2%;width:96%;height:96%}
 .footer-hot{left:15%;top:10%;width:45%;height:80%}
-@media(max-width:900px){.body{grid-template-columns:145px minmax(0,1fr)}.bottom-grid{grid-template-columns:1fr 1fr;}.panel:last-child{grid-column:1/-1}.s-premium{top:59%;height:21%}}
-@media(max-width:600px){.body{grid-template-columns:1fr}.side{display:none}.bottom-grid{grid-template-columns:1fr;gap:8px;padding:8px}.panel:last-child{grid-column:auto}.header img{min-height:58px;object-fit:cover}.mainimg>img{width:100%}.hot{touch-action:manipulation}}
+@media(max-width:900px){
+  .page{grid-template-rows:7vh minmax(0,89vh) 4vh}
+  .body{grid-template-columns:1fr}
+  .side{display:none}
+  .main{grid-template-rows:minmax(0,70%) minmax(0,30%)}
+  .bottom-grid{gap:6px;padding:5px 1% 3px;grid-template-columns:1fr 1fr 1fr}
+  .panel:last-child{grid-column:auto}
+}
+@media(max-width:600px){
+  .page{grid-template-rows:7vh minmax(0,90vh) 3vh}
+  .main{grid-template-rows:minmax(0,70%) minmax(0,30%)}
+  .bottom-grid{grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px 1% 2px}
+  .panel img{border-radius:7px}
+  .header img{object-fit:fill}
+  .footer img{object-fit:fill}
+}
 </style>
 </head>
 <body>
