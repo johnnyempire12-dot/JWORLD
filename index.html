@@ -1,86 +1,166 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>JWORLD — One Platform • Endless Worlds</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>JWORLD</title>
 <style>
-:root{--bg:#020a10;--gold:#f5b90b;--panel:#07141e;--line:#15364d;--text:#f4f7fa;--muted:#9fb0bd}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#000;color:var(--text);font-family:Arial,Helvetica,sans-serif}body{overflow-x:hidden}
-#home{min-height:100vh;background:#000;display:flex;align-items:flex-start;justify-content:center}
-.stage{position:relative;width:min(1536px,100vw);aspect-ratio:1536/1024;background:#000;overflow:hidden}
-.stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
-.hotspot{position:absolute;display:block;background:transparent;border:0;padding:0;margin:0;cursor:pointer;z-index:5}
-.hotspot:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:6px}
-/* Coordinates are percentages of the original 1536x1024 artwork. */
-.hamburger{left:1.1%;top:1.8%;width:3.2%;height:5.5%}.search{left:25.9%;top:1.4%;width:42.0%;height:5.8%}
-.top-chat{left:72.2%;top:1.1%;width:3.0%;height:6.5%}.top-notify{left:77.2%;top:1.1%;width:3.2%;height:6.5%}.top-download{left:82.5%;top:1.1%;width:3.2%;height:6.5%}.top-cart{left:87.4%;top:1.1%;width:3.3%;height:6.5%}.profile{left:91.7%;top:1.0%;width:7.6%;height:6.7%}
-.nav-home{left:1.0%;top:8.0%;width:11.9%;height:3.8%}.nav-market{left:1.0%;top:12.0%;width:11.9%;height:3.8%}.nav-movies{left:1.0%;top:16.0%;width:11.9%;height:3.8%}.nav-apps{left:1.0%;top:20.1%;width:11.9%;height:3.8%}.nav-music{left:1.0%;top:24.0%;width:11.9%;height:3.8%}.nav-books{left:1.0%;top:28.1%;width:11.9%;height:3.8%}.nav-files{left:1.0%;top:32.0%;width:11.9%;height:3.8%}.nav-community{left:1.0%;top:36.0%;width:11.9%;height:3.8%}.nav-news{left:1.0%;top:40.0%;width:11.9%;height:3.8%}.nav-library{left:1.0%;top:44.0%;width:11.9%;height:3.8%}.nav-account{left:1.0%;top:48.0%;width:11.9%;height:3.8%}.nav-support{left:1.0%;top:52.0%;width:11.9%;height:3.8%}
-.hero-explore{left:17.3%;top:27.1%;width:9.0%;height:3.8%}.hero-trailer{left:26.8%;top:27.0%;width:9.4%;height:3.8%}
-.cat-market{left:15.3%;top:34.6%;width:7.2%;height:7.6%}.cat-movies{left:23.0%;top:34.6%;width:6.9%;height:7.6%}.cat-apps{left:29.8%;top:34.6%;width:6.7%;height:7.6%}.cat-music{left:36.7%;top:34.6%;width:6.0%;height:7.6%}.cat-books{left:42.6%;top:34.6%;width:6.0%;height:7.6%}.cat-files{left:48.9%;top:34.6%;width:5.7%;height:7.6%}.cat-community{left:55.1%;top:34.6%;width:7.8%;height:7.6%}.cat-news{left:63.1%;top:34.6%;width:5.2%;height:7.6%}.cat-library{left:68.6%;top:34.6%;width:5.5%;height:7.6%}.cat-account{left:74.1%;top:34.6%;width:4.4%;height:7.6%}.cat-support{left:78.4%;top:34.6%;width:4.0%;height:7.6%}
-/* Featured cards */
-.card1{left:15.4%;top:49.0%;width:11.1%;height:17.6%}.card2{left:27.3%;top:49.0%;width:11.0%;height:17.6%}.card3{left:39.0%;top:49.0%;width:11.0%;height:17.6%}.card4{left:50.5%;top:49.0%;width:11.0%;height:17.6%}.card5{left:62.0%;top:49.0%;width:11.0%;height:17.6%}.card6{left:73.5%;top:49.0%;width:10.8%;height:17.6%}
-.creator{left:15.3%;top:84.6%;width:21.2%;height:9.0%}.communities-cta{left:37.2%;top:84.6%;width:22.0%;height:9.0%}.app-cta{left:60.0%;top:84.6%;width:22.5%;height:9.0%}
-/* Right rail */
-.right-profile{left:81.0%;top:8.0%;width:18.0%;height:24.0%}.right-communities{left:81.0%;top:32.2%;width:18.0%;height:29.0%}.quick{left:81.0%;top:63.2%;width:18.0%;height:19.0%}.help{left:81.0%;top:84.3%;width:18.0%;height:9.3%}
-/* Footer links */
-.footer-about{left:16.0%;top:96.0%;width:4.0%;height:2.5%}.footer-services{left:20.6%;top:96.0%;width:5.0%;height:2.5%}.footer-support{left:26.0%;top:96.0%;width:5.0%;height:2.5%}.footer-contact{left:31.0%;top:96.0%;width:5.0%;height:2.5%}.footer-privacy{left:36.0%;top:96.0%;width:6.0%;height:2.5%}.footer-terms{left:42.0%;top:96.0%;width:7.0%;height:2.5%}
-#section{display:none;min-height:100vh;background:radial-gradient(circle at top,#0c1b28 0,#02070b 50%,#000 100%);padding:22px}
-.section-wrap{max-width:1200px;margin:0 auto}.back{border:1px solid #8b670b;background:#0a1118;color:#fff;border-radius:10px;padding:10px 16px;cursor:pointer}.section-title{font-size:34px;margin:28px 0 8px;color:#f6c329}.section-sub{color:var(--muted);margin-bottom:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.panel{background:rgba(8,20,30,.9);border:1px solid var(--line);border-radius:14px;padding:18px}.panel h3{margin:0 0 8px}.btn{display:inline-block;margin-top:12px;padding:10px 15px;border:1px solid #e6ad16;border-radius:8px;color:#fff;background:#101a22;cursor:pointer}.hidden{display:none}
-@media(max-width:700px){#home{align-items:flex-start}.stage{width:100vw}.hotspot{touch-action:manipulation}.section-title{font-size:28px}}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:#000;overflow:hidden}
+body{font-family:Arial,Helvetica,sans-serif}
+#home{
+  position:fixed;
+  inset:0;
+  width:100vw;
+  height:100vh;
+  height:100dvh;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+#stage{
+  position:relative;
+  width:100%;
+  height:100%;
+  max-width:100vw;
+  max-height:100dvh;
+  overflow:hidden;
+  background:#000;
+}
+#hero{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  display:block;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.zone{
+  position:absolute;
+  display:block;
+  z-index:10;
+  cursor:pointer;
+  background:transparent;
+  border:0;
+  padding:0;
+}
+.zone:focus-visible{
+  outline:2px solid #ffd21a;
+  outline-offset:2px;
+  border-radius:8px;
+}
+#status{
+  position:fixed;
+  left:50%;
+  bottom:12px;
+  transform:translateX(-50%);
+  z-index:30;
+  display:none;
+  background:#07111a;
+  color:#fff;
+  border:1px solid #d8a800;
+  border-radius:8px;
+  padding:10px 14px;
+  font-size:14px;
+}
+@media (max-width:600px){
+  #hero{object-fit:contain}
+}
 </style>
 </head>
 <body>
-<main id="home" aria-label="JWORLD home screen">
-  <div class="stage">
-    <img src="jworld-home.png" alt="JWORLD home screen">
-    <button class="hotspot hamburger" data-section="menu" aria-label="Open menu"></button>
-    <button class="hotspot search" data-section="search" aria-label="Search"></button>
-    <button class="hotspot top-chat" data-section="chat" aria-label="Chat"></button>
-    <button class="hotspot top-notify" data-section="notifications" aria-label="Notifications"></button>
-    <button class="hotspot top-download" data-section="downloads" aria-label="Downloads"></button>
-    <button class="hotspot top-cart" data-section="cart" aria-label="Cart"></button>
-    <button class="hotspot profile" data-section="account" aria-label="Profile"></button>
+<main id="home">
+  <div id="stage">
+    <img id="hero" src="assets/jworld-home.png" alt="JWORLD home screen">
 
-    <button class="hotspot nav-home" data-section="home" aria-label="Home"></button><button class="hotspot nav-market" data-section="marketplace" aria-label="Marketplace"></button><button class="hotspot nav-movies" data-section="movies" aria-label="Movies and Series"></button><button class="hotspot nav-apps" data-section="apps" aria-label="Apps and Games"></button><button class="hotspot nav-music" data-section="music" aria-label="Music"></button><button class="hotspot nav-books" data-section="books" aria-label="Books"></button><button class="hotspot nav-files" data-section="files" aria-label="Files"></button><button class="hotspot nav-community" data-section="communities" aria-label="Communities and Chat"></button><button class="hotspot nav-news" data-section="news" aria-label="News"></button><button class="hotspot nav-library" data-section="library" aria-label="Library"></button><button class="hotspot nav-account" data-section="account" aria-label="Account"></button><button class="hotspot nav-support" data-section="support" aria-label="Support"></button>
+    <!-- Left navigation -->
+    <button class="zone" style="left:1.5%;top:12.8%;width:11.0%;height:4.0%" data-section="Home" aria-label="Home"></button>
+    <button class="zone" style="left:1.5%;top:18.1%;width:11.0%;height:4.0%" data-section="Marketplace" aria-label="Marketplace"></button>
+    <button class="zone" style="left:1.5%;top:23.0%;width:11.0%;height:4.0%" data-section="Movies & Series" aria-label="Movies and Series"></button>
+    <button class="zone" style="left:1.5%;top:27.8%;width:11.0%;height:4.0%" data-section="Apps & Games" aria-label="Apps and Games"></button>
+    <button class="zone" style="left:1.5%;top:32.6%;width:11.0%;height:4.0%" data-section="Music" aria-label="Music"></button>
+    <button class="zone" style="left:1.5%;top:37.4%;width:11.0%;height:4.0%" data-section="Books" aria-label="Books"></button>
+    <button class="zone" style="left:1.5%;top:42.2%;width:11.0%;height:4.0%" data-section="Files" aria-label="Files"></button>
+    <button class="zone" style="left:1.5%;top:47.0%;width:11.0%;height:4.0%" data-section="Communities & Chat" aria-label="Communities and Chat"></button>
+    <button class="zone" style="left:1.5%;top:51.8%;width:11.0%;height:4.0%" data-section="News" aria-label="News"></button>
+    <button class="zone" style="left:1.5%;top:56.6%;width:11.0%;height:4.0%" data-section="Library" aria-label="Library"></button>
+    <button class="zone" style="left:1.5%;top:61.4%;width:11.0%;height:4.0%" data-section="Account" aria-label="Account"></button>
+    <button class="zone" style="left:1.5%;top:66.2%;width:11.0%;height:4.0%" data-section="Support" aria-label="Support"></button>
 
-    <button class="hotspot hero-explore" data-section="marketplace" aria-label="Explore now"></button><button class="hotspot hero-trailer" data-section="movies" aria-label="Watch trailer"></button>
-    <button class="hotspot cat-market" data-section="marketplace" aria-label="Marketplace"></button><button class="hotspot cat-movies" data-section="movies" aria-label="Movies and Series"></button><button class="hotspot cat-apps" data-section="apps" aria-label="Apps and Games"></button><button class="hotspot cat-music" data-section="music" aria-label="Music"></button><button class="hotspot cat-books" data-section="books" aria-label="Books"></button><button class="hotspot cat-files" data-section="files" aria-label="Files"></button><button class="hotspot cat-community" data-section="communities" aria-label="Communities and Chat"></button><button class="hotspot cat-news" data-section="news" aria-label="News"></button><button class="hotspot cat-library" data-section="library" aria-label="Library"></button><button class="hotspot cat-account" data-section="account" aria-label="Account"></button><button class="hotspot cat-support" data-section="support" aria-label="Support"></button>
-    <button class="hotspot card1" data-section="movies" aria-label="The Batman"></button><button class="hotspot card2" data-section="apps" aria-label="Call of Duty Modern Warfare III"></button><button class="hotspot card3" data-section="apps" aria-label="AI Photo Editor Pro"></button><button class="hotspot card4" data-section="books" aria-label="Atomic Habits"></button><button class="hotspot card5" data-section="music" aria-label="Good Vibes Only"></button><button class="hotspot card6" data-section="files" aria-label="Windows 11 Pro"></button>
-    <button class="hotspot creator" data-section="creator" aria-label="Become a creator or seller"></button><button class="hotspot communities-cta" data-section="communities" aria-label="Join our communities"></button><button class="hotspot app-cta" data-section="downloads" aria-label="Download the JWORLD app"></button>
-    <button class="hotspot right-profile" data-section="account" aria-label="Profile panel"></button><button class="hotspot right-communities" data-section="communities" aria-label="My communities"></button><button class="hotspot quick" data-section="quick-access" aria-label="Quick access"></button><button class="hotspot help" data-section="support" aria-label="Need help"></button>
-    <button class="hotspot footer-about" data-section="about" aria-label="About"></button><button class="hotspot footer-services" data-section="services" aria-label="Services"></button><button class="hotspot footer-support" data-section="support" aria-label="Support"></button><button class="hotspot footer-contact" data-section="contact" aria-label="Contact"></button><button class="hotspot footer-privacy" data-section="privacy" aria-label="Privacy policy"></button><button class="hotspot footer-terms" data-section="terms" aria-label="Terms of service"></button>
+    <!-- Header -->
+    <button class="zone" style="left:25.8%;top:2.0%;width:42.0%;height:5.0%" data-section="Search" aria-label="Search"></button>
+    <button class="zone" style="left:72.7%;top:1.2%;width:4.0%;height:6.5%" data-section="Chat" aria-label="Chat"></button>
+    <button class="zone" style="left:79.0%;top:1.2%;width:5.0%;height:6.5%" data-section="Notifications" aria-label="Notifications"></button>
+    <button class="zone" style="left:84.8%;top:1.2%;width:5.0%;height:6.5%" data-section="Downloads" aria-label="Downloads"></button>
+    <button class="zone" style="left:90.0%;top:1.2%;width:5.0%;height:6.5%" data-section="Cart" aria-label="Cart"></button>
+    <button class="zone" style="left:94.5%;top:1.0%;width:5.0%;height:7.0%" data-section="Account" aria-label="Profile"></button>
+
+    <!-- Main banner -->
+    <button class="zone" style="left:16.5%;top:8.0%;width:25.0%;height:25.0%" data-section="Explore" aria-label="Explore Now"></button>
+    <button class="zone" style="left:27.0%;top:27.0%;width:9.5%;height:4.5%" data-section="Trailer" aria-label="Watch Trailer"></button>
+
+    <!-- Category tiles -->
+    <button class="zone" style="left:15.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Marketplace"></button>
+    <button class="zone" style="left:23.2%;top:34.0%;width:7.0%;height:8.0%" data-section="Movies & Series"></button>
+    <button class="zone" style="left:30.7%;top:34.0%;width:7.0%;height:8.0%" data-section="Apps & Games"></button>
+    <button class="zone" style="left:38.0%;top:34.0%;width:7.0%;height:8.0%" data-section="Music"></button>
+    <button class="zone" style="left:45.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Books"></button>
+    <button class="zone" style="left:53.0%;top:34.0%;width:7.0%;height:8.0%" data-section="Files"></button>
+    <button class="zone" style="left:60.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Communities & Chat"></button>
+    <button class="zone" style="left:68.0%;top:34.0%;width:7.0%;height:8.0%" data-section="News"></button>
+    <button class="zone" style="left:75.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Library"></button>
+    <button class="zone" style="left:83.0%;top:34.0%;width:7.0%;height:8.0%" data-section="Account"></button>
+    <button class="zone" style="left:90.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Support"></button>
+
+    <!-- Content / right column -->
+    <button class="zone" style="left:16%;top:43%;width:15%;height:17%" data-section="The Batman"></button>
+    <button class="zone" style="left:31%;top:43%;width:15%;height:17%" data-section="Call of Duty"></button>
+    <button class="zone" style="left:46%;top:43%;width:15%;height:17%" data-section="AI Photo Editor"></button>
+    <button class="zone" style="left:61%;top:43%;width:15%;height:17%" data-section="Atomic Habits"></button>
+    <button class="zone" style="left:76%;top:43%;width:15%;height:17%" data-section="Good Vibes Only"></button>
+
+    <button class="zone" style="left:16%;top:69%;width:20%;height:10%" data-section="Creator / Seller"></button>
+    <button class="zone" style="left:38%;top:69%;width:20%;height:10%" data-section="Communities & Chat"></button>
+    <button class="zone" style="left:60%;top:69%;width:20%;height:10%" data-section="JWORLD App"></button>
+
+    <!-- Right sidebar -->
+    <button class="zone" style="left:81%;top:8%;width:18%;height:23%" data-section="Profile"></button>
+    <button class="zone" style="left:81%;top:32%;width:18%;height:30%" data-section="My Communities"></button>
+    <button class="zone" style="left:81%;top:63%;width:18%;height:20%" data-section="Quick Access"></button>
+    <button class="zone" style="left:81%;top:84%;width:18%;height:8%" data-section="Support"></button>
+
+    <!-- Footer -->
+    <button class="zone" style="left:35%;top:93%;width:6%;height:4%" data-section="About"></button>
+    <button class="zone" style="left:43%;top:93%;width:6%;height:4%" data-section="Services"></button>
+    <button class="zone" style="left:51%;top:93%;width:6%;height:4%" data-section="Support"></button>
+    <button class="zone" style="left:59%;top:93%;width:6%;height:4%" data-section="Contact"></button>
+    <button class="zone" style="left:67%;top:93%;width:8%;height:4%" data-section="Privacy Policy"></button>
+    <button class="zone" style="left:77%;top:93%;width:9%;height:4%" data-section="Terms of Service"></button>
   </div>
 </main>
-<section id="section"><div class="section-wrap"><button class="back" onclick="goHome()">← Back to JWORLD Home</button><h1 class="section-title" id="title"></h1><p class="section-sub" id="sub"></p><div class="grid" id="content"></div></div></section>
+<div id="status"></div>
+
 <script>
-const data={
- home:['JWORLD Home','You are on the original JWORLD front page.'],
- marketplace:['Marketplace','Shop products and digital goods from JWORLD creators and sellers.'],
- movies:['Movies & Series','Discover movies, series, trailers and your watchlist.'],
- apps:['Apps & Games','Find apps, games, tools and digital experiences.'],
- music:['Music','Listen, discover playlists, artists and tracks.'],
- books:['Books','Browse books, authors and reading collections.'],
- files:['Files','Access downloads and your stored digital files.'],
- communities:['Communities & Chat','Join communities, chat, share, create channels and connect with people.'],
- news:['News','Read the latest stories and updates across JWORLD.'],
- library:['JWORLD Library','Your unified collection of saved and purchased content.'],
- account:['Account','Manage your profile, JWORLD ID, settings, orders and payments.'],
- support:['Support','Get help, contact support and find answers.'],
- search:['Search','Search products, movies, books, apps, users and communities.'],
- chat:['Chat','Open your JWORLD messages and conversations.'],
- notifications:['Notifications','View mentions, updates, purchases and community notifications.'],
- downloads:['Downloads','Your downloaded movies, music, apps, books and files.'],
- cart:['Cart','Review items you want to purchase.'],
- menu:['JWORLD Menu','Choose any JWORLD section from the platform menu.'],
- creator:['Creator / Seller','Create your creator profile, upload content and manage sales.'],
- 'quick-access':['Quick Access','Orders, downloads, wishlist, watchlist, playlists, messages, settings and payments.'],
- about:['About JWORLD','One platform • Endless worlds.'],services:['Services','Explore JWORLD services and platform features.'],contact:['Contact','Contact the JWORLD team.'],privacy:['Privacy Policy','Review JWORLD privacy information.'],terms:['Terms of Service','Review JWORLD terms and conditions.']
-};
-function openSection(key){if(key==='home'){goHome();return} const d=data[key]||['JWORLD','Section']; document.getElementById('home').style.display='none';document.getElementById('section').style.display='block';document.getElementById('title').textContent=d[0];document.getElementById('sub').textContent=d[1];const c=document.getElementById('content');c.innerHTML='';['Explore','Featured','Your JWORLD','Recent activity'].forEach((x,i)=>{const p=document.createElement('div');p.className='panel';p.innerHTML=`<h3>${x}</h3><p>${d[1]}</p><button class="btn" onclick="alert('This ${x.toLowerCase()} action is ready for the next feature build.')">Open</button>`;c.appendChild(p)});history.pushState({key},'',`#${key}`)}
-function goHome(){document.getElementById('section').style.display='none';document.getElementById('home').style.display='flex';history.pushState({},'',location.pathname)}
-document.querySelectorAll('.hotspot').forEach(b=>b.addEventListener('click',()=>openSection(b.dataset.section)));
-window.addEventListener('popstate',()=>{location.hash?openSection(location.hash.slice(1)):goHome()});
-if(location.hash)openSection(location.hash.slice(1));
+const statusBox = document.getElementById('status');
+document.querySelectorAll('.zone').forEach(zone => {
+  zone.addEventListener('click', () => {
+    const section = zone.dataset.section || 'Home';
+    if (section === 'Home') {
+      window.scrollTo(0,0);
+      return;
+    }
+    // Placeholder navigation until the real section pages are connected.
+    statusBox.textContent = section + ' — section ready to connect';
+    statusBox.style.display = 'block';
+    clearTimeout(window.__statusTimer);
+    window.__statusTimer = setTimeout(() => statusBox.style.display='none', 1800);
+  });
+});
 </script>
-</body></html>
+</body>
+</html>
