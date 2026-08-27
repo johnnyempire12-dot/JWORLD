@@ -52,11 +52,45 @@ body{width:100vw;height:100vh;height:100dvh}
 .section-modal{position:fixed;inset:0;z-index:110;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.78);padding:20px}
 .section-modal.open{display:flex}.section-box{width:min(520px,94vw);max-height:80vh;overflow:auto;background:#07131d;border:1px solid #d8a800;border-radius:14px;padding:24px;box-shadow:0 15px 50px rgba(0,0,0,.7)}
 .section-box h2{margin:0 0 10px;color:#f4b915}.section-box p{color:#cbd5dc;line-height:1.5}.section-box button{border:1px solid #d8a800;background:#f4b915;color:#111;border-radius:8px;padding:10px 18px;font-weight:700}
+
+.marketplace-view{position:fixed;inset:0;z-index:200;background:#02070c;color:#fff;display:none;flex-direction:column;overflow:hidden}
+.marketplace-view.open{display:flex}
+.market-head{height:72px;flex:0 0 72px;border-bottom:1px solid #123b57;background:#06111a;display:flex;align-items:center;gap:18px;padding:0 20px}
+.market-brand{font-size:20px;color:#f4b915;display:flex;align-items:center;gap:9px;min-width:240px}.market-brand span{font-size:30px}.market-brand b{color:#fff}
+.market-back,.market-cart{border:1px solid #1a4d6c;background:#0a1b27;color:#fff;border-radius:9px;padding:10px 15px;font-weight:700;cursor:pointer}.market-back{margin-left:auto}.market-cart{border-color:#d8a800}.market-cart b{color:#f4b915;margin-left:5px}
+.market-toolbar{display:flex;gap:10px;padding:14px 20px;border-bottom:1px solid #0d2b40;background:#04101a}.market-toolbar input{flex:1;min-width:100px;background:#081b29;border:1px solid #1b5576;color:#fff;border-radius:10px;padding:12px 14px;outline:none}.market-toolbar input:focus{border-color:#f4b915}.market-toolbar select{background:#081b29;border:1px solid #1b5576;color:#fff;border-radius:10px;padding:0 12px}
+.market-body{overflow:auto;padding:18px 20px 30px;min-height:0}.market-title{display:flex;justify-content:space-between;align-items:end}.market-title h1{margin:0;color:#f4b915;font-size:30px}.market-title p{margin:6px 0 0;color:#9db0bd}.market-title span{color:#8fa6b5}
+.market-cats{display:flex;gap:8px;overflow:auto;padding:18px 0 14px}.market-cats button{white-space:nowrap;border:1px solid #17405d;background:#081b29;color:#cbd5dc;border-radius:20px;padding:9px 14px;cursor:pointer}.market-cats button.active,.market-cats button:hover{border-color:#f4b915;color:#111;background:#f4b915}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.product-card{background:#07131d;border:1px solid #123b57;border-radius:13px;overflow:hidden;display:flex;flex-direction:column;min-height:280px}.product-art{height:125px;display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,#10283a,#09131d)}.product-card:nth-child(3n) .product-art{background:linear-gradient(135deg,#24124a,#09131d)}.product-card:nth-child(4n) .product-art{background:linear-gradient(135deg,#38210b,#09131d)}.product-info{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}.tag{font-size:11px;color:#f4b915;text-transform:uppercase;letter-spacing:.5px}.product-info h3{font-size:16px;margin:0}.product-info p{font-size:12px;color:#9db0bd;margin:0;min-height:30px}.rating{font-size:12px;color:#ffd21a}.price{font-size:17px;font-weight:800;color:#fff;margin-top:auto}.product-actions{display:flex;gap:7px;margin-top:7px}.product-actions button{flex:1;padding:9px;border-radius:8px;cursor:pointer;font-weight:700}.add{border:1px solid #f4b915;background:#f4b915;color:#111}.buy{border:1px solid #1a5b7f;background:#0b2231;color:#fff}
+.market-cart-panel{position:absolute;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:flex-end;padding:0}.market-cart-panel.open{display:flex}.cart-box{height:100%;width:min(430px,92vw);background:#06111a;border-left:1px solid #d8a800;padding:24px;overflow:auto;box-shadow:-15px 0 40px rgba(0,0,0,.5)}.cart-box>button:first-child{float:right;width:36px;height:36px;border-radius:50%;border:1px solid #17405d;background:#0a1b27;color:#fff;font-size:22px}.cart-box h2{color:#f4b915;margin-top:5px}.cart-line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #123b57;padding:13px 0}.cart-line small{color:#9db0bd;display:block}.cart-remove{background:none;border:0;color:#ff6b6b;cursor:pointer}.cart-total{font-size:20px;font-weight:800;margin:22px 0;color:#fff}.checkout{width:100%;padding:13px;border:1px solid #f4b915;background:#f4b915;color:#111;border-radius:9px;font-weight:800;cursor:pointer}
+@media(max-width:900px){.market-head{height:62px;flex-basis:62px;padding:0 10px;gap:8px}.market-brand{min-width:0;font-size:15px}.market-brand span{font-size:22px}.market-back{margin-left:auto}.market-toolbar{padding:9px 10px;flex-wrap:wrap}.market-toolbar input{flex-basis:100%}.market-toolbar select{height:38px;flex:1}.market-body{padding:13px 10px 24px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.product-card{min-height:250px}.product-art{height:95px;font-size:40px}.market-title h1{font-size:24px}.market-title p{font-size:12px}}
+@media(max-width:430px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-info{padding:9px}.product-info h3{font-size:14px}.product-info p{font-size:11px}.product-actions button{padding:8px 4px;font-size:11px}.market-cart{padding:9px}.market-back{padding:9px}.market-brand b{display:none}}
 </style>
 </head>
 <body>
 <div class="menu-drawer" id="menuDrawer"><div class="menu-card"><button class="menu-close" id="menuClose" aria-label="Close menu">×</button><h2>JWORLD</h2><button data-menu="Home">⌂ Home</button><button data-menu="Marketplace">🛒 Marketplace</button><button data-menu="Movies & Series">🎬 Movies & Series</button><button data-menu="Apps & Games">🎮 Apps & Games</button><button data-menu="Music">♫ Music</button><button data-menu="Books">▣ Books</button><button data-menu="Files">▰ Files</button><button data-menu="Communities & Chat">👥 Communities & Chat</button><button data-menu="News">▤ News</button><button data-menu="Library">▱ Library</button><button data-menu="Account">♙ Account</button><button data-menu="Support">? Support</button><button data-menu="JWORLD Premium">♛ JWORLD Premium</button></div></div>
 <div class="section-modal" id="sectionModal"><div class="section-box"><h2 id="sectionTitle">JWORLD</h2><p id="sectionText"></p><button id="sectionClose">Close</button></div></div>
+<div class="marketplace-view" id="marketplaceView" aria-hidden="true">
+  <header class="market-head">
+    <div class="market-brand"><span>♛</span><b>JWORLD Marketplace</b></div>
+    <button class="market-back" id="marketBack">← Home</button>
+    <button class="market-cart" id="marketCart">🛒 Cart <b id="cartCount">0</b></button>
+  </header>
+  <div class="market-toolbar">
+    <input id="marketSearch" type="search" placeholder="Search products, books, apps, files..." autocomplete="off">
+    <select id="marketCategory"><option value="all">All categories</option><option>Books</option><option>Apps</option><option>Games</option><option>Files</option><option>Music</option><option>Movies</option></select>
+    <select id="marketSort"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="rating">Top Rated</option></select>
+  </div>
+  <div class="market-body">
+    <div class="market-title"><div><h1>Marketplace</h1><p>Shop digital products, books, apps, games, music and more.</p></div><span id="resultCount"></span></div>
+    <div class="market-cats"><button data-cat="all" class="active">All</button><button data-cat="Books">Books</button><button data-cat="Apps">Apps</button><button data-cat="Games">Games</button><button data-cat="Files">Files</button><button data-cat="Music">Music</button><button data-cat="Movies">Movies</button></div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+  <div class="market-cart-panel" id="marketCartPanel" aria-hidden="true">
+    <div class="cart-box"><button id="cartClose">×</button><h2>Your Cart</h2><div id="cartItems"></div><div class="cart-total" id="cartTotal"></div><button class="checkout" id="checkoutBtn">Proceed to Checkout →</button></div>
+  </div>
+</div>
+
 <div class="page">
   <div class="header">
     <img src="assets/header.png" alt="JWORLD header">
@@ -90,7 +124,8 @@ const modal=document.getElementById('sectionModal');
 const titleEl=document.getElementById('sectionTitle');
 const textEl=document.getElementById('sectionText');
 function openSection(section){
-  if(section==='Home'){location.hash=''; modal.classList.remove('open'); return;}
+  if(section==='Home'){location.hash=''; modal.classList.remove('open'); marketplaceView.classList.remove('open'); marketplaceView.setAttribute('aria-hidden','true'); return;}
+  if(section==='Marketplace'){modal.classList.remove('open'); marketplaceView.classList.add('open'); marketplaceView.setAttribute('aria-hidden','false'); location.hash='Marketplace'; renderProducts(); return;}
   location.hash=encodeURIComponent(section);
   titleEl.textContent=section;
   textEl.textContent=section+' is ready to open in JWORLD. This clickable home-screen control is now connected.';
@@ -106,6 +141,49 @@ drawer.addEventListener('click',e=>{if(e.target===drawer)drawer.classList.remove
 document.getElementById('sectionClose').addEventListener('click',()=>modal.classList.remove('open'));
 modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
 
+
+const marketplaceView=document.getElementById('marketplaceView');
+const productGrid=document.getElementById('productGrid');
+const marketSearch=document.getElementById('marketSearch');
+const marketCategory=document.getElementById('marketCategory');
+const marketSort=document.getElementById('marketSort');
+const resultCount=document.getElementById('resultCount');
+const cartCount=document.getElementById('cartCount');
+const cartPanel=document.getElementById('marketCartPanel');
+const cartItems=document.getElementById('cartItems');
+const cartTotal=document.getElementById('cartTotal');
+const products=[
+ {id:1,name:'Atomic Habits',cat:'Books',price:10000,rating:4.8,icon:'📚',desc:'Practical personal-growth book.'},
+ {id:2,name:'AI Photo Editor Pro',cat:'Apps',price:4500,rating:4.7,icon:'📱',desc:'Powerful photo editing tools.'},
+ {id:3,name:'Windows 11 Pro',cat:'Files',price:8500,rating:4.5,icon:'🪟',desc:'Digital software license.'},
+ {id:4,name:'Good Vibes Only',cat:'Music',price:2500,rating:4.6,icon:'🎵',desc:'Chill music collection.'},
+ {id:5,name:'Modern Warfare III',cat:'Games',price:12000,rating:4.6,icon:'🎮',desc:'Action shooter experience.'},
+ {id:6,name:'The Batman',cat:'Movies',price:3000,rating:4.8,icon:'🎬',desc:'Action thriller movie.'},
+ {id:7,name:'The 7 Habits',cat:'Books',price:9000,rating:4.6,icon:'📖',desc:'Classic personal development.'},
+ {id:8,name:'Study Music Playlist',cat:'Music',price:1800,rating:4.6,icon:'🎧',desc:'Focus and study playlist.'}
+];
+let cart=[];
+function naira(n){return '₦'+n.toLocaleString('en-NG')}
+function renderProducts(){
+ let q=marketSearch.value.trim().toLowerCase(), cat=marketCategory.value;
+ let list=products.filter(p=>(!q||(p.name+' '+p.cat+' '+p.desc).toLowerCase().includes(q))&&(cat==='all'||p.cat===cat));
+ if(marketSort.value==='low')list.sort((a,b)=>a.price-b.price); if(marketSort.value==='high')list.sort((a,b)=>b.price-a.price); if(marketSort.value==='rating')list.sort((a,b)=>b.rating-a.rating);
+ resultCount.textContent=list.length+' products';
+ productGrid.innerHTML=list.map(p=>`<article class="product-card"><div class="product-art">${p.icon}</div><div class="product-info"><span class="tag">${p.cat}</span><h3>${p.name}</h3><p>${p.desc}</p><div class="rating">★ ${p.rating}</div><div class="price">${naira(p.price)}</div><div class="product-actions"><button class="add" data-add="${p.id}">Add to Cart</button><button class="buy" data-buy="${p.id}">Buy Now</button></div></div></article>`).join('')||'<p>No products found.</p>';
+}
+function updateCart(){
+ cartCount.textContent=cart.length;
+ cartItems.innerHTML=cart.length?cart.map((p,i)=>`<div class="cart-line"><div><b>${p.name}</b><small>${p.cat} · ${naira(p.price)}</small></div><button class="cart-remove" data-remove="${i}">Remove</button></div>`).join(''):'<p style="color:#9db0bd">Your cart is empty.</p>';
+ cartTotal.textContent='Total: '+naira(cart.reduce((s,p)=>s+p.price,0));
+}
+productGrid.addEventListener('click',e=>{const add=e.target.closest('[data-add]'),buy=e.target.closest('[data-buy]');const id=Number((add||buy)?.dataset[(add?'add':'buy')]);if(!id)return;const p=products.find(x=>x.id===id);if(buy){cart.push(p);updateCart();cartPanel.classList.add('open');}else{cart.push(p);updateCart();}});
+cartItems.addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(b){cart.splice(Number(b.dataset.remove),1);updateCart();}});
+document.getElementById('marketCart').addEventListener('click',()=>{updateCart();cartPanel.classList.add('open')});
+document.getElementById('cartClose').addEventListener('click',()=>cartPanel.classList.remove('open'));
+document.getElementById('marketBack').addEventListener('click',()=>openSection('Home'));
+marketSearch.addEventListener('input',renderProducts);marketCategory.addEventListener('change',renderProducts);marketSort.addEventListener('change',renderProducts);
+document.querySelectorAll('.market-cats button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.market-cats button').forEach(x=>x.classList.remove('active'));b.classList.add('active');marketCategory.value=b.dataset.cat;renderProducts()}));
+document.getElementById('checkoutBtn').addEventListener('click',()=>{if(!cart.length){alert('Your cart is empty.');return}alert('Checkout is ready to connect to your payment provider.');});
 </script>
 </body>
 </html>
