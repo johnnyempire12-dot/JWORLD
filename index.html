@@ -70,12 +70,12 @@ body{width:100vw;height:100vh;height:100dvh}
 </style>
 </head>
 <body>
-<div class="menu-drawer" id="menuDrawer"><div class="menu-card"><button class="menu-close" id="menuClose" aria-label="Close menu">×</button><h2>JWORLD</h2><button data-menu="Home">⌂ Home</button><button data-menu="Marketplace">🛒 Marketplace</button><button data-menu="Movies & Series">🎬 Movies & Series</button><button data-menu="Apps & Games">🎮 Apps & Games</button><button data-menu="Music">♫ Music</button><button data-menu="Books">▣ Books</button><button data-menu="Files">▰ Files</button><button data-menu="Communities & Chat">👥 Communities & Chat</button><button data-menu="News">▤ News</button><button data-menu="Library">▱ Library</button><button data-menu="Account">♙ Account</button><button data-menu="Support">? Support</button><button data-menu="JWORLD Premium">♛ JWORLD Premium</button></div></div>
+<div class="menu-drawer" id="menuDrawer"><div class="menu-card"><button class="menu-close" id="menuClose" aria-label="Close menu">×</button><h2>JWORLD</h2><button data-menu="Home">⌂ Home</button><button data-menu="Marketplace">🛒 Marketplace</button><button data-menu="Apps & Games">🎬 Apps & Games</button><button data-menu="Apps & Games">🎮 Apps & Games</button><button data-menu="Music">♫ Music</button><button data-menu="Books">▣ Books</button><button data-menu="Files">▰ Files</button><button data-menu="Communities & Chat">👥 Communities & Chat</button><button data-menu="News">▤ News</button><button data-menu="Library">▱ Library</button><button data-menu="Account">♙ Account</button><button data-menu="Support">? Support</button><button data-menu="JWORLD Premium">♛ JWORLD Premium</button></div></div>
 <div class="section-modal" id="sectionModal"><div class="section-box"><h2 id="sectionTitle">JWORLD</h2><p id="sectionText"></p><button id="sectionClose">Close</button></div></div>
 <div class="movies-view" id="moviesView" aria-hidden="true">
-<header class="movies-head"><div class="movies-brand">🎬 <b>JWORLD Movies & Series</b></div><button class="movies-back" id="moviesBack">← Home</button><button class="movies-filter" id="moviesFav">♡ Favorites <span id="favCount">0</span></button></header>
-<div class="movies-toolbar"><input class="movies-search" id="moviesSearch" type="search" placeholder="Search movies and series..."><select class="movies-filter" id="genreFilter"><option value="all">All Genres</option><option>Action</option><option>Drama</option><option>Thriller</option><option>Comedy</option><option>Sci-Fi</option><option>Animation</option></select><select class="movies-sort" id="movieSort"><option value="rating">Top Rated</option><option value="new">Newest</option><option value="az">A–Z</option></select></div>
-<div class="movies-body"><div class="movies-title"><div><h1>Movies & Series</h1><p>Watch, discover and save your favorites across JWORLD.</p></div><span id="movieCount"></span></div><div class="movie-tabs" id="movieTabs"><button class="active" data-moviecat="all">All</button><button data-moviecat="Movies">Movies</button><button data-moviecat="Series">Series</button><button data-moviecat="Trending">Trending</button><button data-moviecat="Continue">Continue Watching</button></div><div class="movie-grid" id="movieGrid"></div></div></div>
+<header class="movies-head"><div class="movies-brand">🎬 <b>JWORLD Apps & Games</b></div><button class="movies-back" id="moviesBack">← Home</button><button class="movies-filter" id="moviesFav">♡ Favorites <span id="favCount">0</span></button></header>
+<div class="movies-toolbar"><input class="movies-search" id="moviesSearch" type="search" placeholder="Search movies and series..."><select class="movies-filter" id="genreFilter"><option value="all">All Genres</option><option>Games</option><option>Education</option><option>Thriller</option><option>Productivity</option><option>Tools</option><option>Animation</option></select><select class="movies-sort" id="movieSort"><option value="rating">Top Rated</option><option value="new">Newest</option><option value="az">A–Z</option></select></div>
+<div class="movies-body"><div class="movies-title"><div><h1>Apps & Games</h1><p>Watch, discover and save your favorites across JWORLD.</p></div><span id="movieCount"></span></div><div class="movie-tabs" id="movieTabs"><button class="active" data-moviecat="all">All</button><button data-moviecat="Apps">Apps</button><button data-moviecat="Games">Games</button><button data-moviecat="Trending">Trending</button><button data-moviecat="Continue">Continue Playing</button></div><div class="movie-grid" id="movieGrid"></div></div></div>
 <div class="movie-modal" id="movieModal"><div class="movie-box"><h2 id="movieModalTitle">Movie</h2><div class="watch-screen" id="watchScreen">▶</div><p id="movieModalText"></p><button id="movieClose">Close</button></div></div>
 <div class="marketplace-view" id="marketplaceView" aria-hidden="true">
   <header class="market-head">
@@ -85,12 +85,12 @@ body{width:100vw;height:100vh;height:100dvh}
   </header>
   <div class="market-toolbar">
     <input id="marketSearch" type="search" placeholder="Search products, books, apps, files..." autocomplete="off">
-    <select id="marketCategory"><option value="all">All categories</option><option>Books</option><option>Apps</option><option>Games</option><option>Files</option><option>Music</option><option>Movies</option></select>
+    <select id="marketCategory"><option value="all">All categories</option><option>Books</option><option>Apps</option><option>Games</option><option>Files</option><option>Music</option><option>Apps</option></select>
     <select id="marketSort"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="rating">Top Rated</option></select>
   </div>
   <div class="market-body">
     <div class="market-title"><div><h1>Marketplace</h1><p>Shop digital products, books, apps, games, music and more.</p></div><span id="resultCount"></span></div>
-    <div class="market-cats"><button data-cat="all" class="active">All</button><button data-cat="Books">Books</button><button data-cat="Apps">Apps</button><button data-cat="Games">Games</button><button data-cat="Files">Files</button><button data-cat="Music">Music</button><button data-cat="Movies">Movies</button></div>
+    <div class="market-cats"><button data-cat="all" class="active">All</button><button data-cat="Books">Books</button><button data-cat="Apps">Apps</button><button data-cat="Games">Games</button><button data-cat="Files">Files</button><button data-cat="Music">Music</button><button data-cat="Apps">Apps</button></div>
     <div class="product-grid" id="productGrid"></div>
   </div>
   <div class="market-cart-panel" id="marketCartPanel" aria-hidden="true">
@@ -106,15 +106,15 @@ body{width:100vw;height:100vh;height:100dvh}
   <div class="body">
     <aside class="side">
       <img src="assets/sidebar.png" alt="JWORLD navigation">
-      <button class="hot s-home" data-section="Home"></button><button class="hot s-market" data-section="Marketplace"></button><button class="hot s-movies" data-section="Movies & Series"></button><button class="hot s-apps" data-section="Apps & Games"></button><button class="hot s-music" data-section="Music"></button><button class="hot s-books" data-section="Books"></button><button class="hot s-files" data-section="Files"></button><button class="hot s-community" data-section="Communities & Chat"></button><button class="hot s-news" data-section="News"></button><button class="hot s-library" data-section="Library"></button><button class="hot s-account" data-section="Account"></button><button class="hot s-support" data-section="Support"></button><button class="hot s-premium" data-section="JWORLD Premium"></button>
+      <button class="hot s-home" data-section="Home"></button><button class="hot s-market" data-section="Marketplace"></button><button class="hot s-movies" data-section="Apps & Games"></button><button class="hot s-apps" data-section="Apps & Games"></button><button class="hot s-music" data-section="Music"></button><button class="hot s-books" data-section="Books"></button><button class="hot s-files" data-section="Files"></button><button class="hot s-community" data-section="Communities & Chat"></button><button class="hot s-news" data-section="News"></button><button class="hot s-library" data-section="Library"></button><button class="hot s-account" data-section="Account"></button><button class="hot s-support" data-section="Support"></button><button class="hot s-premium" data-section="JWORLD Premium"></button>
     </aside>
     <main class="main">
       <div class="mainimg">
         <img src="assets/main.png" alt="JWORLD main dashboard">
         <button class="hot m-hero" data-section="Explore"></button>
-        <button class="hot m-cat1" data-section="Marketplace"></button><button class="hot m-cat2" data-section="Movies & Series"></button><button class="hot m-cat3" data-section="Apps & Games"></button><button class="hot m-cat4" data-section="Music"></button><button class="hot m-cat5" data-section="Books"></button><button class="hot m-cat6" data-section="Files"></button><button class="hot m-cat7" data-section="Communities & Chat"></button><button class="hot m-cat8" data-section="News"></button><button class="hot m-cat9" data-section="Library"></button>
-        <button class="hot m-feature1" data-section="Movies & Series"></button><button class="hot m-feature2" data-section="Apps & Games"></button><button class="hot m-feature3" data-section="Apps & Games"></button><button class="hot m-feature4" data-section="Books"></button><button class="hot m-feature5" data-section="Music"></button><button class="hot m-feature6" data-section="Files"></button>
-        <button class="hot m-reco" data-section="Recommended For You"></button><button class="hot m-watch" data-section="Continue Watching"></button>
+        <button class="hot m-cat1" data-section="Marketplace"></button><button class="hot m-cat2" data-section="Apps & Games"></button><button class="hot m-cat3" data-section="Apps & Games"></button><button class="hot m-cat4" data-section="Music"></button><button class="hot m-cat5" data-section="Books"></button><button class="hot m-cat6" data-section="Files"></button><button class="hot m-cat7" data-section="Communities & Chat"></button><button class="hot m-cat8" data-section="News"></button><button class="hot m-cat9" data-section="Library"></button>
+        <button class="hot m-feature1" data-section="Apps & Games"></button><button class="hot m-feature2" data-section="Apps & Games"></button><button class="hot m-feature3" data-section="Apps & Games"></button><button class="hot m-feature4" data-section="Books"></button><button class="hot m-feature5" data-section="Music"></button><button class="hot m-feature6" data-section="Files"></button>
+        <button class="hot m-reco" data-section="Recommended For You"></button><button class="hot m-watch" data-section="Continue Playing"></button>
       </div>
       <div class="bottom-grid">
         <div class="panel"><img src="assets/communities.png" alt="My Communities"><button class="hot p-community" data-section="My Communities" aria-label="My Communities"></button></div>
@@ -133,7 +133,7 @@ const textEl=document.getElementById('sectionText');
 function openSection(section){
   if(section==='Home'){location.hash=''; modal.classList.remove('open'); marketplaceView.classList.remove('open'); marketplaceView.setAttribute('aria-hidden','true'); return;}
   if(section==='Marketplace'){modal.classList.remove('open'); marketplaceView.classList.add('open'); marketplaceView.setAttribute('aria-hidden','false'); location.hash='Marketplace'; renderProducts(); return;}
-  if(section==='Movies & Series'){modal.classList.remove('open'); marketplaceView.classList.remove('open'); moviesView.classList.add('open'); moviesView.setAttribute('aria-hidden','false'); location.hash='Movies%20%26%20Series'; renderMovies(); return;}
+  if(section==='Apps & Games'){modal.classList.remove('open'); marketplaceView.classList.remove('open'); moviesView.classList.add('open'); moviesView.setAttribute('aria-hidden','false'); location.hash='Apps%20%26%20Games'; renderApps(); return;}
   location.hash=encodeURIComponent(section);
   titleEl.textContent=section;
   textEl.textContent=section+' is ready to open in JWORLD. This clickable home-screen control is now connected.';
@@ -161,12 +161,12 @@ const cartPanel=document.getElementById('marketCartPanel');
 const cartItems=document.getElementById('cartItems');
 const cartTotal=document.getElementById('cartTotal');
 const products=[
- {id:1,name:'Atomic Habits',cat:'Books',price:10000,rating:4.8,icon:'📚',desc:'Practical personal-growth book.'},
+ {id:1,name:'Study Master',cat:'Books',price:10000,rating:4.8,icon:'📚',desc:'Practical personal-growth book.'},
  {id:2,name:'AI Photo Editor Pro',cat:'Apps',price:4500,rating:4.7,icon:'📱',desc:'Powerful photo editing tools.'},
  {id:3,name:'Windows 11 Pro',cat:'Files',price:8500,rating:4.5,icon:'🪟',desc:'Digital software license.'},
- {id:4,name:'Good Vibes Only',cat:'Music',price:2500,rating:4.6,icon:'🎵',desc:'Chill music collection.'},
- {id:5,name:'Modern Warfare III',cat:'Games',price:12000,rating:4.6,icon:'🎮',desc:'Action shooter experience.'},
- {id:6,name:'The Batman',cat:'Movies',price:3000,rating:4.8,icon:'🎬',desc:'Action thriller movie.'},
+ {id:4,name:'Video Editor Pro',cat:'Music',price:2500,rating:4.6,icon:'🎵',desc:'Chill music collection.'},
+ {id:5,name:'Modern Warfare III',cat:'Games',price:12000,rating:4.6,icon:'🎮',desc:'Games shooter experience.'},
+ {id:6,name:'Clash Kingdom',cat:'Apps',price:3000,rating:4.8,icon:'🎬',desc:'Games thriller movie.'},
  {id:7,name:'The 7 Habits',cat:'Books',price:9000,rating:4.6,icon:'📖',desc:'Classic personal development.'},
  {id:8,name:'Study Music Playlist',cat:'Music',price:1800,rating:4.6,icon:'🎧',desc:'Focus and study playlist.'}
 ];
@@ -204,21 +204,21 @@ const movieModalTitle=document.getElementById('movieModalTitle');
 const movieModalText=document.getElementById('movieModalText');
 const watchScreen=document.getElementById('watchScreen');
 const moviesData=[
-{id:1,title:'The Batman',type:'Movies',genre:'Thriller',rating:4.8,year:2022,desc:'Dark action thriller.'},
-{id:2,title:'Call of Duty: Modern Warfare III',type:'Movies',genre:'Action',rating:4.6,year:2023,desc:'High-intensity action.'},
-{id:3,title:'Dune: Part Two',type:'Movies',genre:'Sci-Fi',rating:4.8,year:2024,desc:'Epic science-fiction adventure.'},
-{id:4,title:'The Last of Us',type:'Series',genre:'Drama',rating:4.9,year:2023,desc:'Post-apocalyptic drama series.'},
-{id:5,title:'The Witcher',type:'Series',genre:'Action',rating:4.7,year:2023,desc:'Fantasy adventure series.'},
-{id:6,title:'Spider-Man: Across the Spider-Verse',type:'Movies',genre:'Animation',rating:4.8,year:2023,desc:'Animated multiverse adventure.'},
-{id:7,title:'Interstellar',type:'Movies',genre:'Sci-Fi',rating:4.9,year:2014,desc:'A journey beyond the stars.'},
-{id:8,title:'Stranger Things',type:'Series',genre:'Thriller',rating:4.7,year:2022,desc:'Mystery and supernatural series.'},
-{id:9,title:'Black Panther',type:'Movies',genre:'Action',rating:4.7,year:2018,desc:'Superhero action adventure.'},
-{id:10,title:'The 7 Habits',type:'Series',genre:'Drama',rating:4.6,year:2025,desc:'Personal growth series.'}
+{id:1,title:'Clash Kingdom',type:'Apps',genre:'Thriller',rating:4.8,year:2022,desc:'Dark action thriller.'},
+{id:2,title:'Racing Legends: Modern Warfare III',type:'Apps',genre:'Games',rating:4.6,year:2023,desc:'High-intensity action.'},
+{id:3,title:'Photo Studio AI',type:'Apps',genre:'Tools',rating:4.8,year:2024,desc:'Epic science-fiction adventure.'},
+{id:4,title:'The Last of Us',type:'Games',genre:'Education',rating:4.9,year:2023,desc:'Post-apocalyptic drama series.'},
+{id:5,title:'The Witcher',type:'Games',genre:'Games',rating:4.7,year:2023,desc:'Fantasy adventure series.'},
+{id:6,title:'Spider-Man: Across the Spider-Verse',type:'Apps',genre:'Animation',rating:4.8,year:2023,desc:'Animated multiverse adventure.'},
+{id:7,title:'Interstellar',type:'Apps',genre:'Tools',rating:4.9,year:2014,desc:'A journey beyond the stars.'},
+{id:8,title:'JWORLD Chat',type:'Games',genre:'Thriller',rating:4.7,year:2022,desc:'Mystery and supernatural series.'},
+{id:9,title:'Battle Arena',type:'Apps',genre:'Games',rating:4.7,year:2018,desc:'Superhero action adventure.'},
+{id:10,title:'The 7 Habits',type:'Games',genre:'Education',rating:4.6,year:2025,desc:'Personal growth series.'}
 ];
 let movieTab='all', favorites=new Set();
-function renderMovies(){let q=moviesSearch.value.trim().toLowerCase();let g=genreFilter.value;let list=moviesData.filter(m=>(!q||(m.title+' '+m.genre+' '+m.desc).toLowerCase().includes(q))&&(g==='all'||m.genre===g));if(movieTab==='Movies')list=list.filter(m=>m.type==='Movies');if(movieTab==='Series')list=list.filter(m=>m.type==='Series');if(movieTab==='Trending')list=list.filter(m=>m.rating>=4.8);if(movieTab==='Continue')list=list.filter(m=>[4,5].includes(m.id));if(movieSort.value==='rating')list.sort((a,b)=>b.rating-a.rating);if(movieSort.value==='new')list.sort((a,b)=>b.year-a.year);if(movieSort.value==='az')list.sort((a,b)=>a.title.localeCompare(b.title));movieCount.textContent=list.length+' titles';movieGrid.innerHTML=list.map(m=>`<article class="movie-card"><div class="movie-art">${m.type==='Series'?'📺':'🎬'} ${m.genre}</div><div class="movie-info"><h3>${m.title}</h3><div class="movie-meta">${m.type} · ${m.year} · ${m.genre}</div><div class="stars">★ ${m.rating.toFixed(1)}</div><div class="movie-actions"><button class="primary" data-watch="${m.id}">Watch Now</button><button data-fav="${m.id}">${favorites.has(m.id)?'♥':'♡'}</button></div></div></article>`).join('')||'<p>No titles found.</p>';document.getElementById('favCount').textContent=favorites.size;}
-movieGrid.addEventListener('click',e=>{const w=e.target.closest('[data-watch]');const f=e.target.closest('[data-fav]');if(w){const m=moviesData.find(x=>x.id==w.dataset.watch);movieModalTitle.textContent=m.title;movieModalText.textContent=m.desc+' This is the JWORLD player preview; connect your licensed video source when publishing.';watchScreen.textContent='▶';movieModal.classList.add('open');}if(f){const id=Number(f.dataset.fav);favorites.has(id)?favorites.delete(id):favorites.add(id);renderMovies();}});
-moviesSearch.addEventListener('input',renderMovies);genreFilter.addEventListener('change',renderMovies);movieSort.addEventListener('change',renderMovies);document.querySelectorAll('[data-moviecat]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-moviecat]').forEach(x=>x.classList.remove('active'));b.classList.add('active');movieTab=b.dataset.moviecat;renderMovies();}));document.getElementById('moviesBack').addEventListener('click',()=>{moviesView.classList.remove('open');moviesView.setAttribute('aria-hidden','true');location.hash='';});document.getElementById('movieClose').addEventListener('click',()=>movieModal.classList.remove('open'));movieModal.addEventListener('click',e=>{if(e.target===movieModal)movieModal.classList.remove('open')});
+function renderApps(){let q=moviesSearch.value.trim().toLowerCase();let g=genreFilter.value;let list=moviesData.filter(m=>(!q||(m.title+' '+m.genre+' '+m.desc).toLowerCase().includes(q))&&(g==='all'||m.genre===g));if(movieTab==='Apps')list=list.filter(m=>m.type==='Apps');if(movieTab==='Games')list=list.filter(m=>m.type==='Games');if(movieTab==='Trending')list=list.filter(m=>m.rating>=4.8);if(movieTab==='Continue')list=list.filter(m=>[4,5].includes(m.id));if(movieSort.value==='rating')list.sort((a,b)=>b.rating-a.rating);if(movieSort.value==='new')list.sort((a,b)=>b.year-a.year);if(movieSort.value==='az')list.sort((a,b)=>a.title.localeCompare(b.title));movieCount.textContent=list.length+' titles';movieGrid.innerHTML=list.map(m=>`<article class="movie-card"><div class="movie-art">${m.type==='Games'?'📺':'🎬'} ${m.genre}</div><div class="movie-info"><h3>${m.title}</h3><div class="movie-meta">${m.type} · ${m.year} · ${m.genre}</div><div class="stars">★ ${m.rating.toFixed(1)}</div><div class="movie-actions"><button class="primary" data-watch="${m.id}">Open Now</button><button data-fav="${m.id}">${favorites.has(m.id)?'♥':'♡'}</button></div></div></article>`).join('')||'<p>No titles found.</p>';document.getElementById('favCount').textContent=favorites.size;}
+movieGrid.addEventListener('click',e=>{const w=e.target.closest('[data-watch]');const f=e.target.closest('[data-fav]');if(w){const m=moviesData.find(x=>x.id==w.dataset.watch);movieModalTitle.textContent=m.title;movieModalText.textContent=m.desc+' This is the JWORLD player preview; connect your licensed video source when publishing.';watchScreen.textContent='▶';movieModal.classList.add('open');}if(f){const id=Number(f.dataset.fav);favorites.has(id)?favorites.delete(id):favorites.add(id);renderApps();}});
+moviesSearch.addEventListener('input',renderApps);genreFilter.addEventListener('change',renderApps);movieSort.addEventListener('change',renderApps);document.querySelectorAll('[data-moviecat]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-moviecat]').forEach(x=>x.classList.remove('active'));b.classList.add('active');movieTab=b.dataset.moviecat;renderApps();}));document.getElementById('moviesBack').addEventListener('click',()=>{moviesView.classList.remove('open');moviesView.setAttribute('aria-hidden','true');location.hash='';});document.getElementById('movieClose').addEventListener('click',()=>movieModal.classList.remove('open'));movieModal.addEventListener('click',e=>{if(e.target===movieModal)movieModal.classList.remove('open')});
 </script>
 </body>
 </html>
