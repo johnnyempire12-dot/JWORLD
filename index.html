@@ -1,166 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>JWORLD</title>
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:#000;overflow:hidden}
-body{font-family:Arial,Helvetica,sans-serif}
-#home{
-  position:fixed;
-  inset:0;
-  width:100vw;
-  height:100vh;
-  height:100dvh;
-  background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-#stage{
-  position:relative;
-  width:100%;
-  height:100%;
-  max-width:100vw;
-  max-height:100dvh;
-  overflow:hidden;
-  background:#000;
-}
-#hero{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  object-position:center;
-  display:block;
-  user-select:none;
-  -webkit-user-drag:none;
-}
-.zone{
-  position:absolute;
-  display:block;
-  z-index:10;
-  cursor:pointer;
-  background:transparent;
-  border:0;
-  padding:0;
-}
-.zone:focus-visible{
-  outline:2px solid #ffd21a;
-  outline-offset:2px;
-  border-radius:8px;
-}
-#status{
-  position:fixed;
-  left:50%;
-  bottom:12px;
-  transform:translateX(-50%);
-  z-index:30;
-  display:none;
-  background:#07111a;
-  color:#fff;
-  border:1px solid #d8a800;
-  border-radius:8px;
-  padding:10px 14px;
-  font-size:14px;
-}
-@media (max-width:600px){
-  #hero{object-fit:contain}
-}
+:root{--bg:#02070c;--gold:#f4b915;--line:#123b57}
+*{box-sizing:border-box}html,body{margin:0;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}body{overflow-x:hidden}
+.page{width:min(1536px,100vw);margin:0 auto;background:#000}
+.header{position:relative;width:100%;line-height:0}.header img{width:100%;height:auto;display:block}.body{display:grid;grid-template-columns:211px minmax(0,1fr);align-items:start}.side{position:relative;line-height:0}.side img{width:100%;height:auto;display:block}.main{min-width:0;background:#000;padding:0 0 0 0}.mainimg{position:relative;line-height:0}.mainimg>img{width:100%;height:auto;display:block}.bottom-grid{display:grid;grid-template-columns:1.05fr 1fr 1fr;gap:10px;padding:10px 0 10px}.panel{position:relative;line-height:0;min-width:0}.panel img{width:100%;height:auto;display:block;border-radius:10px}.footer{position:relative;line-height:0}.footer img{width:100%;height:auto;display:block}
+.hot{position:absolute;z-index:5;background:transparent;border:0;padding:0;margin:0;cursor:pointer;border-radius:6px}.hot:focus-visible{outline:2px solid #ffd21a;outline-offset:2px}
+/* header */
+.h-search{left:25.8%;top:5%;width:42%;height:70%}.h-chat{left:72.5%;top:5%;width:4%;height:80%}.h-notify{left:77.8%;top:5%;width:4%;height:80%}.h-download{left:82.8%;top:5%;width:4%;height:80%}.h-cart{left:87.8%;top:5%;width:4%;height:80%}.h-profile{left:92%;top:2%;width:7%;height:90%}
+/* sidebar, relative to 211x899 crop */
+.s-home{left:2%;top:1.2%;width:95%;height:4.4%}.s-market{left:2%;top:6.0%;width:95%;height:4.4%}.s-movies{left:2%;top:10.6%;width:95%;height:4.4%}.s-apps{left:2%;top:15.2%;width:95%;height:4.4%}.s-music{left:2%;top:19.8%;width:95%;height:4.4%}.s-books{left:2%;top:24.4%;width:95%;height:4.4%}.s-files{left:2%;top:29.0%;width:95%;height:4.4%}.s-community{left:2%;top:33.7%;width:95%;height:4.4%}.s-news{left:2%;top:38.3%;width:95%;height:4.4%}.s-library{left:2%;top:42.9%;width:95%;height:4.4%}.s-account{left:2%;top:47.5%;width:95%;height:4.4%}.s-support{left:2%;top:52.1%;width:95%;height:4.4%}.s-premium{left:5%;top:59.5%;width:90%;height:22%}
+/* main crop: original x=211..1230, y=67..866 */
+.m-hero{left:2%;top:1.5%;width:96%;height:31%}.m-cat1{left:2%;top:35%;width:10%;height:9%}.m-cat2{left:13.7%;top:35%;width:10%;height:9%}.m-cat3{left:25.2%;top:35%;width:10%;height:9%}.m-cat4{left:36.7%;top:35%;width:10%;height:9%}.m-cat5{left:48.2%;top:35%;width:10%;height:9%}.m-cat6{left:59.6%;top:35%;width:10%;height:9%}.m-cat7{left:71%;top:35%;width:10%;height:9%}.m-cat8{left:82.3%;top:35%;width:6%;height:9%}.m-cat9{left:88.8%;top:35%;width:5.5%;height:9%}.m-feature1{left:2%;top:52%;width:16%;height:20%}.m-feature2{left:20%;top:52%;width:16%;height:20%}.m-feature3{left:38%;top:52%;width:16%;height:20%}.m-feature4{left:56%;top:52%;width:16%;height:20%}.m-feature5{left:74%;top:52%;width:10%;height:20%}.m-feature6{left:85%;top:52%;width:10%;height:20%}.m-reco{left:2%;top:79%;width:66%;height:19%}.m-watch{left:70%;top:79%;width:28%;height:19%}
+/* bottom panels */
+.p-community{left:2%;top:2%;width:96%;height:96%}.p-quick{left:2%;top:2%;width:96%;height:96%}.p-premium{left:2%;top:2%;width:96%;height:96%}
+.footer-hot{left:15%;top:10%;width:45%;height:80%}
+@media(max-width:900px){.body{grid-template-columns:145px minmax(0,1fr)}.bottom-grid{grid-template-columns:1fr 1fr;}.panel:last-child{grid-column:1/-1}.s-premium{top:59%;height:21%}}
+@media(max-width:600px){.body{grid-template-columns:1fr}.side{display:none}.bottom-grid{grid-template-columns:1fr;gap:8px;padding:8px}.panel:last-child{grid-column:auto}.header img{min-height:58px;object-fit:cover}.mainimg>img{width:100%}.hot{touch-action:manipulation}}
 </style>
 </head>
 <body>
-<main id="home">
-  <div id="stage">
-    <img id="hero" src="assets/jworld-home.png" alt="JWORLD home screen">
-
-    <!-- Left navigation -->
-    <button class="zone" style="left:1.5%;top:12.8%;width:11.0%;height:4.0%" data-section="Home" aria-label="Home"></button>
-    <button class="zone" style="left:1.5%;top:18.1%;width:11.0%;height:4.0%" data-section="Marketplace" aria-label="Marketplace"></button>
-    <button class="zone" style="left:1.5%;top:23.0%;width:11.0%;height:4.0%" data-section="Movies & Series" aria-label="Movies and Series"></button>
-    <button class="zone" style="left:1.5%;top:27.8%;width:11.0%;height:4.0%" data-section="Apps & Games" aria-label="Apps and Games"></button>
-    <button class="zone" style="left:1.5%;top:32.6%;width:11.0%;height:4.0%" data-section="Music" aria-label="Music"></button>
-    <button class="zone" style="left:1.5%;top:37.4%;width:11.0%;height:4.0%" data-section="Books" aria-label="Books"></button>
-    <button class="zone" style="left:1.5%;top:42.2%;width:11.0%;height:4.0%" data-section="Files" aria-label="Files"></button>
-    <button class="zone" style="left:1.5%;top:47.0%;width:11.0%;height:4.0%" data-section="Communities & Chat" aria-label="Communities and Chat"></button>
-    <button class="zone" style="left:1.5%;top:51.8%;width:11.0%;height:4.0%" data-section="News" aria-label="News"></button>
-    <button class="zone" style="left:1.5%;top:56.6%;width:11.0%;height:4.0%" data-section="Library" aria-label="Library"></button>
-    <button class="zone" style="left:1.5%;top:61.4%;width:11.0%;height:4.0%" data-section="Account" aria-label="Account"></button>
-    <button class="zone" style="left:1.5%;top:66.2%;width:11.0%;height:4.0%" data-section="Support" aria-label="Support"></button>
-
-    <!-- Header -->
-    <button class="zone" style="left:25.8%;top:2.0%;width:42.0%;height:5.0%" data-section="Search" aria-label="Search"></button>
-    <button class="zone" style="left:72.7%;top:1.2%;width:4.0%;height:6.5%" data-section="Chat" aria-label="Chat"></button>
-    <button class="zone" style="left:79.0%;top:1.2%;width:5.0%;height:6.5%" data-section="Notifications" aria-label="Notifications"></button>
-    <button class="zone" style="left:84.8%;top:1.2%;width:5.0%;height:6.5%" data-section="Downloads" aria-label="Downloads"></button>
-    <button class="zone" style="left:90.0%;top:1.2%;width:5.0%;height:6.5%" data-section="Cart" aria-label="Cart"></button>
-    <button class="zone" style="left:94.5%;top:1.0%;width:5.0%;height:7.0%" data-section="Account" aria-label="Profile"></button>
-
-    <!-- Main banner -->
-    <button class="zone" style="left:16.5%;top:8.0%;width:25.0%;height:25.0%" data-section="Explore" aria-label="Explore Now"></button>
-    <button class="zone" style="left:27.0%;top:27.0%;width:9.5%;height:4.5%" data-section="Trailer" aria-label="Watch Trailer"></button>
-
-    <!-- Category tiles -->
-    <button class="zone" style="left:15.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Marketplace"></button>
-    <button class="zone" style="left:23.2%;top:34.0%;width:7.0%;height:8.0%" data-section="Movies & Series"></button>
-    <button class="zone" style="left:30.7%;top:34.0%;width:7.0%;height:8.0%" data-section="Apps & Games"></button>
-    <button class="zone" style="left:38.0%;top:34.0%;width:7.0%;height:8.0%" data-section="Music"></button>
-    <button class="zone" style="left:45.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Books"></button>
-    <button class="zone" style="left:53.0%;top:34.0%;width:7.0%;height:8.0%" data-section="Files"></button>
-    <button class="zone" style="left:60.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Communities & Chat"></button>
-    <button class="zone" style="left:68.0%;top:34.0%;width:7.0%;height:8.0%" data-section="News"></button>
-    <button class="zone" style="left:75.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Library"></button>
-    <button class="zone" style="left:83.0%;top:34.0%;width:7.0%;height:8.0%" data-section="Account"></button>
-    <button class="zone" style="left:90.5%;top:34.0%;width:7.0%;height:8.0%" data-section="Support"></button>
-
-    <!-- Content / right column -->
-    <button class="zone" style="left:16%;top:43%;width:15%;height:17%" data-section="The Batman"></button>
-    <button class="zone" style="left:31%;top:43%;width:15%;height:17%" data-section="Call of Duty"></button>
-    <button class="zone" style="left:46%;top:43%;width:15%;height:17%" data-section="AI Photo Editor"></button>
-    <button class="zone" style="left:61%;top:43%;width:15%;height:17%" data-section="Atomic Habits"></button>
-    <button class="zone" style="left:76%;top:43%;width:15%;height:17%" data-section="Good Vibes Only"></button>
-
-    <button class="zone" style="left:16%;top:69%;width:20%;height:10%" data-section="Creator / Seller"></button>
-    <button class="zone" style="left:38%;top:69%;width:20%;height:10%" data-section="Communities & Chat"></button>
-    <button class="zone" style="left:60%;top:69%;width:20%;height:10%" data-section="JWORLD App"></button>
-
-    <!-- Right sidebar -->
-    <button class="zone" style="left:81%;top:8%;width:18%;height:23%" data-section="Profile"></button>
-    <button class="zone" style="left:81%;top:32%;width:18%;height:30%" data-section="My Communities"></button>
-    <button class="zone" style="left:81%;top:63%;width:18%;height:20%" data-section="Quick Access"></button>
-    <button class="zone" style="left:81%;top:84%;width:18%;height:8%" data-section="Support"></button>
-
-    <!-- Footer -->
-    <button class="zone" style="left:35%;top:93%;width:6%;height:4%" data-section="About"></button>
-    <button class="zone" style="left:43%;top:93%;width:6%;height:4%" data-section="Services"></button>
-    <button class="zone" style="left:51%;top:93%;width:6%;height:4%" data-section="Support"></button>
-    <button class="zone" style="left:59%;top:93%;width:6%;height:4%" data-section="Contact"></button>
-    <button class="zone" style="left:67%;top:93%;width:8%;height:4%" data-section="Privacy Policy"></button>
-    <button class="zone" style="left:77%;top:93%;width:9%;height:4%" data-section="Terms of Service"></button>
+<div class="page">
+  <div class="header">
+    <img src="assets/header.png" alt="JWORLD header">
+    <button class="hot h-search" data-section="Search" aria-label="Search"></button><button class="hot h-chat" data-section="Chat" aria-label="Chat"></button><button class="hot h-notify" data-section="Notifications" aria-label="Notifications"></button><button class="hot h-download" data-section="Downloads" aria-label="Downloads"></button><button class="hot h-cart" data-section="Cart" aria-label="Cart"></button><button class="hot h-profile" data-section="Account" aria-label="Account"></button>
   </div>
-</main>
-<div id="status"></div>
-
+  <div class="body">
+    <aside class="side">
+      <img src="assets/sidebar.png" alt="JWORLD navigation">
+      <button class="hot s-home" data-section="Home"></button><button class="hot s-market" data-section="Marketplace"></button><button class="hot s-movies" data-section="Movies & Series"></button><button class="hot s-apps" data-section="Apps & Games"></button><button class="hot s-music" data-section="Music"></button><button class="hot s-books" data-section="Books"></button><button class="hot s-files" data-section="Files"></button><button class="hot s-community" data-section="Communities & Chat"></button><button class="hot s-news" data-section="News"></button><button class="hot s-library" data-section="Library"></button><button class="hot s-account" data-section="Account"></button><button class="hot s-support" data-section="Support"></button><button class="hot s-premium" data-section="JWORLD Premium"></button>
+    </aside>
+    <main class="main">
+      <div class="mainimg">
+        <img src="assets/main.png" alt="JWORLD main dashboard">
+        <button class="hot m-hero" data-section="Explore"></button>
+        <button class="hot m-cat1" data-section="Marketplace"></button><button class="hot m-cat2" data-section="Movies & Series"></button><button class="hot m-cat3" data-section="Apps & Games"></button><button class="hot m-cat4" data-section="Music"></button><button class="hot m-cat5" data-section="Books"></button><button class="hot m-cat6" data-section="Files"></button><button class="hot m-cat7" data-section="Communities & Chat"></button><button class="hot m-cat8" data-section="News"></button><button class="hot m-cat9" data-section="Library"></button>
+        <button class="hot m-feature1" data-section="Movies & Series"></button><button class="hot m-feature2" data-section="Apps & Games"></button><button class="hot m-feature3" data-section="Apps & Games"></button><button class="hot m-feature4" data-section="Books"></button><button class="hot m-feature5" data-section="Music"></button><button class="hot m-feature6" data-section="Files"></button>
+        <button class="hot m-reco" data-section="Recommended For You"></button><button class="hot m-watch" data-section="Continue Watching"></button>
+      </div>
+      <div class="bottom-grid">
+        <div class="panel"><img src="assets/communities.png" alt="My Communities"><button class="hot p-community" data-section="My Communities" aria-label="My Communities"></button></div>
+        <div class="panel"><img src="assets/quick-access.png" alt="Quick Access"><button class="hot p-quick" data-section="Quick Access" aria-label="Quick Access"></button></div>
+        <div class="panel"><img src="assets/premium.png" alt="JWORLD Premium"><button class="hot p-premium" data-section="JWORLD Premium" aria-label="JWORLD Premium"></button></div>
+      </div>
+    </main>
+  </div>
+  <div class="footer"><img src="assets/footer.png" alt="JWORLD footer"></div>
+</div>
 <script>
-const statusBox = document.getElementById('status');
-document.querySelectorAll('.zone').forEach(zone => {
-  zone.addEventListener('click', () => {
-    const section = zone.dataset.section || 'Home';
-    if (section === 'Home') {
-      window.scrollTo(0,0);
-      return;
-    }
-    // Placeholder navigation until the real section pages are connected.
-    statusBox.textContent = section + ' — section ready to connect';
-    statusBox.style.display = 'block';
-    clearTimeout(window.__statusTimer);
-    window.__statusTimer = setTimeout(() => statusBox.style.display='none', 1800);
-  });
-});
+const page=document.querySelector('.page');
+function go(section){
+  if(section==='Home'){location.hash='';return;}
+  const title=encodeURIComponent(section); location.hash=title;
+  alert(section+' — ready to open');
+}
+document.querySelectorAll('.hot').forEach(b=>b.addEventListener('click',()=>go(b.dataset.section||'Home')));
 </script>
 </body>
 </html>
