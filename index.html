@@ -2,113 +2,85 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#05080b">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>JWORLD — One Platform • Endless Worlds</title>
-<link rel="stylesheet" href="styles.css">
+<style>
+:root{--bg:#020a10;--gold:#f5b90b;--panel:#07141e;--line:#15364d;--text:#f4f7fa;--muted:#9fb0bd}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#000;color:var(--text);font-family:Arial,Helvetica,sans-serif}body{overflow-x:hidden}
+#home{min-height:100vh;background:#000;display:flex;align-items:flex-start;justify-content:center}
+.stage{position:relative;width:min(1536px,100vw);aspect-ratio:1536/1024;background:#000;overflow:hidden}
+.stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none}
+.hotspot{position:absolute;display:block;background:transparent;border:0;padding:0;margin:0;cursor:pointer;z-index:5}
+.hotspot:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:6px}
+/* Coordinates are percentages of the original 1536x1024 artwork. */
+.hamburger{left:1.1%;top:1.8%;width:3.2%;height:5.5%}.search{left:25.9%;top:1.4%;width:42.0%;height:5.8%}
+.top-chat{left:72.2%;top:1.1%;width:3.0%;height:6.5%}.top-notify{left:77.2%;top:1.1%;width:3.2%;height:6.5%}.top-download{left:82.5%;top:1.1%;width:3.2%;height:6.5%}.top-cart{left:87.4%;top:1.1%;width:3.3%;height:6.5%}.profile{left:91.7%;top:1.0%;width:7.6%;height:6.7%}
+.nav-home{left:1.0%;top:8.0%;width:11.9%;height:3.8%}.nav-market{left:1.0%;top:12.0%;width:11.9%;height:3.8%}.nav-movies{left:1.0%;top:16.0%;width:11.9%;height:3.8%}.nav-apps{left:1.0%;top:20.1%;width:11.9%;height:3.8%}.nav-music{left:1.0%;top:24.0%;width:11.9%;height:3.8%}.nav-books{left:1.0%;top:28.1%;width:11.9%;height:3.8%}.nav-files{left:1.0%;top:32.0%;width:11.9%;height:3.8%}.nav-community{left:1.0%;top:36.0%;width:11.9%;height:3.8%}.nav-news{left:1.0%;top:40.0%;width:11.9%;height:3.8%}.nav-library{left:1.0%;top:44.0%;width:11.9%;height:3.8%}.nav-account{left:1.0%;top:48.0%;width:11.9%;height:3.8%}.nav-support{left:1.0%;top:52.0%;width:11.9%;height:3.8%}
+.hero-explore{left:17.3%;top:27.1%;width:9.0%;height:3.8%}.hero-trailer{left:26.8%;top:27.0%;width:9.4%;height:3.8%}
+.cat-market{left:15.3%;top:34.6%;width:7.2%;height:7.6%}.cat-movies{left:23.0%;top:34.6%;width:6.9%;height:7.6%}.cat-apps{left:29.8%;top:34.6%;width:6.7%;height:7.6%}.cat-music{left:36.7%;top:34.6%;width:6.0%;height:7.6%}.cat-books{left:42.6%;top:34.6%;width:6.0%;height:7.6%}.cat-files{left:48.9%;top:34.6%;width:5.7%;height:7.6%}.cat-community{left:55.1%;top:34.6%;width:7.8%;height:7.6%}.cat-news{left:63.1%;top:34.6%;width:5.2%;height:7.6%}.cat-library{left:68.6%;top:34.6%;width:5.5%;height:7.6%}.cat-account{left:74.1%;top:34.6%;width:4.4%;height:7.6%}.cat-support{left:78.4%;top:34.6%;width:4.0%;height:7.6%}
+/* Featured cards */
+.card1{left:15.4%;top:49.0%;width:11.1%;height:17.6%}.card2{left:27.3%;top:49.0%;width:11.0%;height:17.6%}.card3{left:39.0%;top:49.0%;width:11.0%;height:17.6%}.card4{left:50.5%;top:49.0%;width:11.0%;height:17.6%}.card5{left:62.0%;top:49.0%;width:11.0%;height:17.6%}.card6{left:73.5%;top:49.0%;width:10.8%;height:17.6%}
+.creator{left:15.3%;top:84.6%;width:21.2%;height:9.0%}.communities-cta{left:37.2%;top:84.6%;width:22.0%;height:9.0%}.app-cta{left:60.0%;top:84.6%;width:22.5%;height:9.0%}
+/* Right rail */
+.right-profile{left:81.0%;top:8.0%;width:18.0%;height:24.0%}.right-communities{left:81.0%;top:32.2%;width:18.0%;height:29.0%}.quick{left:81.0%;top:63.2%;width:18.0%;height:19.0%}.help{left:81.0%;top:84.3%;width:18.0%;height:9.3%}
+/* Footer links */
+.footer-about{left:16.0%;top:96.0%;width:4.0%;height:2.5%}.footer-services{left:20.6%;top:96.0%;width:5.0%;height:2.5%}.footer-support{left:26.0%;top:96.0%;width:5.0%;height:2.5%}.footer-contact{left:31.0%;top:96.0%;width:5.0%;height:2.5%}.footer-privacy{left:36.0%;top:96.0%;width:6.0%;height:2.5%}.footer-terms{left:42.0%;top:96.0%;width:7.0%;height:2.5%}
+#section{display:none;min-height:100vh;background:radial-gradient(circle at top,#0c1b28 0,#02070b 50%,#000 100%);padding:22px}
+.section-wrap{max-width:1200px;margin:0 auto}.back{border:1px solid #8b670b;background:#0a1118;color:#fff;border-radius:10px;padding:10px 16px;cursor:pointer}.section-title{font-size:34px;margin:28px 0 8px;color:#f6c329}.section-sub{color:var(--muted);margin-bottom:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.panel{background:rgba(8,20,30,.9);border:1px solid var(--line);border-radius:14px;padding:18px}.panel h3{margin:0 0 8px}.btn{display:inline-block;margin-top:12px;padding:10px 15px;border:1px solid #e6ad16;border-radius:8px;color:#fff;background:#101a22;cursor:pointer}.hidden{display:none}
+@media(max-width:700px){#home{align-items:flex-start}.stage{width:100vw}.hotspot{touch-action:manipulation}.section-title{font-size:28px}}
+</style>
 </head>
 <body>
-<div class="app">
-  <header class="topbar">
-    <button class="icon-btn menu" aria-label="Menu">☰</button>
-    <div class="brand">
-      <div class="brand-mark">♛</div>
-      <div><div class="brand-name"><span>J</span>WORLD</div><div class="brand-sub">ONE PLATFORM • ENDLESS WORLDS</div></div>
-    </div>
-    <div class="search"><span>⌕</span><input id="globalSearch" placeholder="Search for products, movies, books, apps..."><button>⌕</button></div>
-    <div class="top-actions">
-      <button>💬<small>Chat</small></button>
-      <button class="badge-btn">🔔<i>3</i><small>Notifications</small></button>
-      <button class="badge-btn">🛒<i>2</i><small>Cart</small></button>
-      <button class="profile">👤<small>Johnny⌄</small></button>
-    </div>
-  </header>
+<main id="home" aria-label="JWORLD home screen">
+  <div class="stage">
+    <img src="jworld-home.png" alt="JWORLD home screen">
+    <button class="hotspot hamburger" data-section="menu" aria-label="Open menu"></button>
+    <button class="hotspot search" data-section="search" aria-label="Search"></button>
+    <button class="hotspot top-chat" data-section="chat" aria-label="Chat"></button>
+    <button class="hotspot top-notify" data-section="notifications" aria-label="Notifications"></button>
+    <button class="hotspot top-download" data-section="downloads" aria-label="Downloads"></button>
+    <button class="hotspot top-cart" data-section="cart" aria-label="Cart"></button>
+    <button class="hotspot profile" data-section="account" aria-label="Profile"></button>
 
-  <nav class="mainnav" id="mainnav">
-    <a class="active" href="#home">🏠<span>Home</span></a>
-    <a href="#marketplace">🛍️<span>Marketplace</span></a>
-    <a href="#movies">🎬<span>Movies & Series</span></a>
-    <a href="#apps">🎮<span>Apps & Games</span></a>
-    <a href="#music">🎵<span>Music</span></a>
-    <a href="#books">📚<span>Books</span></a>
-    <a href="#files">📁<span>Files</span></a>
-    <a href="#communities">👥<span>Communities</span></a>
-    <a href="#news">📰<span>News</span></a>
-    <a href="#library">📖<span>Library</span></a>
-  </nav>
+    <button class="hotspot nav-home" data-section="home" aria-label="Home"></button><button class="hotspot nav-market" data-section="marketplace" aria-label="Marketplace"></button><button class="hotspot nav-movies" data-section="movies" aria-label="Movies and Series"></button><button class="hotspot nav-apps" data-section="apps" aria-label="Apps and Games"></button><button class="hotspot nav-music" data-section="music" aria-label="Music"></button><button class="hotspot nav-books" data-section="books" aria-label="Books"></button><button class="hotspot nav-files" data-section="files" aria-label="Files"></button><button class="hotspot nav-community" data-section="communities" aria-label="Communities and Chat"></button><button class="hotspot nav-news" data-section="news" aria-label="News"></button><button class="hotspot nav-library" data-section="library" aria-label="Library"></button><button class="hotspot nav-account" data-section="account" aria-label="Account"></button><button class="hotspot nav-support" data-section="support" aria-label="Support"></button>
 
-  <main id="home">
-    <section class="hero">
-      <img src="assets/hero.png" alt="">
-      <div class="hero-overlay"></div>
-      <div class="hero-copy">
-        <div class="eyebrow">WELCOME TO</div>
-        <h1><span>J</span>WORLD</h1>
-        <h2>Your Ultimate Digital Kingdom</h2>
-        <p>Shop, stream, download and connect —<br>Everything you need in one powerful platform.</p>
-        <div class="hero-buttons"><button class="gold" onclick="toast('Explore JWORLD')">Explore Now →</button><button onclick="toast('Upload Center')">Upload Content ☁</button></div>
-      </div>
-      <div class="hero-tag">More<br>Than Just<br>A Platform...<br><em>It's a World.</em></div>
-    </section>
-
-    <section class="stats">
-      <div>🛍️ <b>1000+</b><small>Products</small></div><div>👥 <b>50K+</b><small>Users</small></div><div>🏪 <b>500+</b><small>Sellers</small></div><div>☁️ <b>10K+</b><small>Downloads Today</small></div><div>🎧 <b>24/7</b><small>Support</small></div>
-      <div class="wa">🟢 +234 916 938 5002<br><small>Chat with us on WhatsApp</small></div>
-    </section>
-
-    <section class="panel worlds">
-      <div class="section-head"><div><h2>EXPLORE OUR WORLDS</h2><p>One platform. Endless possibilities.</p></div><a href="#">View All Sections →</a></div>
-      <div class="world-grid">
-        <a class="world blue" href="#marketplace"><b>🛒</b><strong>MARKETPLACE</strong><small>Shop products from trusted sellers.</small><button>Explore →</button></a>
-        <a class="world red" href="#movies"><b>🎬</b><strong>MOVIES & SERIES</strong><small>Watch and download movies & series.</small><button>Explore →</button></a>
-        <a class="world green" href="#apps"><b>🎮</b><strong>APPS & GAMES</strong><small>Download the best apps & games.</small><button>Explore →</button></a>
-        <a class="world purple" href="#music"><b>🎵</b><strong>MUSIC</strong><small>Stream and download your favorite music.</small><button>Explore →</button></a>
-        <a class="world gold" href="#books"><b>📚</b><strong>BOOKS</strong><small>Buy and download amazing books.</small><button>Explore →</button></a>
-        <a class="world cyan" href="#files"><b>📁</b><strong>FILES</strong><small>Get important files, documents & more.</small><button>Explore →</button></a>
-        <a class="world pink" href="#communities"><b>👥</b><strong>COMMUNITIES</strong><small>Join, chat and build with others.</small><button>Explore →</button></a>
-        <a class="world teal" href="#news"><b>📰</b><strong>NEWS</strong><small>Latest news and updates.</small><button>Explore →</button></a>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="section-head"><div><h2>TRENDING & FEATURED</h2><p>Handpicked for you</p></div><div class="tabs"><button class="selected">Trending</button><button>New</button><button>Popular</button><button>Recommended</button></div></div>
-      <div class="cards">
-        <article class="card"><img src="assets/movie.jpg"><label>MOVIE</label><h3>The Batman</h3><small>Action · Thriller</small><p>⭐ 4.8 (12.5K)</p><b>$4.99</b><button onclick="toast('Opening The Batman')">Watch Now</button></article>
-        <article class="card"><img src="assets/game.jpg"><label>GAME</label><h3>Call of Duty: Modern Warfare III</h3><small>Action · Shooter</small><p>⭐ 4.6 (8.9K)</p><b>$59.99</b><button onclick="toast('Opening game')">Buy Now</button></article>
-        <article class="card"><img src="assets/app.jpg"><label>APP</label><h3>AI Photo Editor Pro</h3><small>Tools · Photo</small><p>⭐ 4.7 (5.2K)</p><b>$2.99</b><button onclick="toast('Starting download')">Download</button></article>
-        <article class="card"><img src="assets/book.jpg"><label>BOOK</label><h3>Atomic Habits</h3><small>James Clear</small><p>⭐ 4.8 (25.4K)</p><b>$9.99</b><button onclick="toast('Opening book')">Buy Now</button></article>
-        <article class="card"><img src="assets/music.jpg"><label>MUSIC</label><h3>Good Vibes Only</h3><small>Various Artists</small><p>⭐ 4.6 (9.8K)</p><b>$1.99</b><button onclick="toast('Playing music')">Listen Now</button></article>
-        <article class="card"><img src="assets/file.jpg"><label>FILE</label><h3>Windows 11 Pro</h3><small>Software · Tools</small><p>⭐ 4.5 (6.3K)</p><b>$19.99</b><button onclick="toast('Opening file')">Download</button></article>
-      </div>
-    </section>
-
-    <section class="split">
-      <div class="panel">
-        <div class="section-head"><div><h2>RECOMMENDED FOR YOU</h2><p>Based on your activity</p></div></div>
-        <div class="mini-grid">
-          <div class="mini"><img src="assets/movie.jpg"><strong>Dune: Part Two</strong><small>Movie · Sci-Fi</small><span>⭐ 4.8</span></div>
-          <div class="mini"><img src="assets/game.jpg"><strong>The Last of Us</strong><small>Series · Drama</small><span>⭐ 4.9</span></div>
-          <div class="mini"><img src="assets/music.jpg"><strong>Spotify Premium</strong><small>App · Music</small><span>⭐ 4.7</span></div>
-          <div class="mini"><img src="assets/book.jpg"><strong>The 7 Habits...</strong><small>Book · Self Help</small><span>⭐ 4.6</span></div>
-          <div class="mini"><img src="assets/file.jpg"><strong>GTA V</strong><small>Game · Action</small><span>⭐ 4.8</span></div>
-        </div>
-      </div>
-      <div class="community-cta panel" id="communities">
-        <div class="discord">◉</div><div><h2>Join Our Communities</h2><p>Chat, share, make friends and be part of something bigger.</p></div><button class="gold" onclick="toast('Opening Communities')">Explore Communities →</button>
-      </div>
-    </section>
-
-    <section class="quick-row">
-      <div class="panel"><h2>⚡ Quick Access</h2><p>Get to what you need fast.</p><div class="quick-grid"><button>🧾<small>My Orders</small></button><button>⬇️<small>Downloads</small></button><button>♡<small>Wishlist</small></button><button>◉<small>Watchlist</small></button><button>🎵<small>Playlists</small></button><button>💬<small>Messages</small></button><button>👤<small>Profile</small></button><button>⚙️<small>Settings</small></button></div></div>
-      <div class="panel creator"><h2>For Creators & Sellers</h2><p>Sell your products, content and services on JWORLD.</p><button class="gold" onclick="toast('Seller onboarding')">Start Selling →</button></div>
-      <div class="panel"><h2>🛡️ Security & Support</h2><p>Your safety and satisfaction are our priority.</p><button onclick="toast('Support center')">Contact Support →</button></div>
-      <div class="panel"><h2>📖 Your Library</h2><p>All your purchased, saved and watched content in one place.</p><button onclick="toast('Opening Library')">Open Library →</button></div>
-    </section>
-  </main>
-
-  <footer><div class="footer-brand"><span>♛</span> JWORLD <small>ONE PLATFORM • ENDLESS WORLDS</small></div><div class="footer-links"><a>About</a><a>Services</a><a>Support</a><a>Contact</a><a>Privacy Policy</a><a>Terms of Service</a></div><div>© 2026 JWORLD. All rights reserved.</div></footer>
-</div>
-<div id="toast"></div>
-<script src="app.js"></script>
-</body>
-</html>
+    <button class="hotspot hero-explore" data-section="marketplace" aria-label="Explore now"></button><button class="hotspot hero-trailer" data-section="movies" aria-label="Watch trailer"></button>
+    <button class="hotspot cat-market" data-section="marketplace" aria-label="Marketplace"></button><button class="hotspot cat-movies" data-section="movies" aria-label="Movies and Series"></button><button class="hotspot cat-apps" data-section="apps" aria-label="Apps and Games"></button><button class="hotspot cat-music" data-section="music" aria-label="Music"></button><button class="hotspot cat-books" data-section="books" aria-label="Books"></button><button class="hotspot cat-files" data-section="files" aria-label="Files"></button><button class="hotspot cat-community" data-section="communities" aria-label="Communities and Chat"></button><button class="hotspot cat-news" data-section="news" aria-label="News"></button><button class="hotspot cat-library" data-section="library" aria-label="Library"></button><button class="hotspot cat-account" data-section="account" aria-label="Account"></button><button class="hotspot cat-support" data-section="support" aria-label="Support"></button>
+    <button class="hotspot card1" data-section="movies" aria-label="The Batman"></button><button class="hotspot card2" data-section="apps" aria-label="Call of Duty Modern Warfare III"></button><button class="hotspot card3" data-section="apps" aria-label="AI Photo Editor Pro"></button><button class="hotspot card4" data-section="books" aria-label="Atomic Habits"></button><button class="hotspot card5" data-section="music" aria-label="Good Vibes Only"></button><button class="hotspot card6" data-section="files" aria-label="Windows 11 Pro"></button>
+    <button class="hotspot creator" data-section="creator" aria-label="Become a creator or seller"></button><button class="hotspot communities-cta" data-section="communities" aria-label="Join our communities"></button><button class="hotspot app-cta" data-section="downloads" aria-label="Download the JWORLD app"></button>
+    <button class="hotspot right-profile" data-section="account" aria-label="Profile panel"></button><button class="hotspot right-communities" data-section="communities" aria-label="My communities"></button><button class="hotspot quick" data-section="quick-access" aria-label="Quick access"></button><button class="hotspot help" data-section="support" aria-label="Need help"></button>
+    <button class="hotspot footer-about" data-section="about" aria-label="About"></button><button class="hotspot footer-services" data-section="services" aria-label="Services"></button><button class="hotspot footer-support" data-section="support" aria-label="Support"></button><button class="hotspot footer-contact" data-section="contact" aria-label="Contact"></button><button class="hotspot footer-privacy" data-section="privacy" aria-label="Privacy policy"></button><button class="hotspot footer-terms" data-section="terms" aria-label="Terms of service"></button>
+  </div>
+</main>
+<section id="section"><div class="section-wrap"><button class="back" onclick="goHome()">← Back to JWORLD Home</button><h1 class="section-title" id="title"></h1><p class="section-sub" id="sub"></p><div class="grid" id="content"></div></div></section>
+<script>
+const data={
+ home:['JWORLD Home','You are on the original JWORLD front page.'],
+ marketplace:['Marketplace','Shop products and digital goods from JWORLD creators and sellers.'],
+ movies:['Movies & Series','Discover movies, series, trailers and your watchlist.'],
+ apps:['Apps & Games','Find apps, games, tools and digital experiences.'],
+ music:['Music','Listen, discover playlists, artists and tracks.'],
+ books:['Books','Browse books, authors and reading collections.'],
+ files:['Files','Access downloads and your stored digital files.'],
+ communities:['Communities & Chat','Join communities, chat, share, create channels and connect with people.'],
+ news:['News','Read the latest stories and updates across JWORLD.'],
+ library:['JWORLD Library','Your unified collection of saved and purchased content.'],
+ account:['Account','Manage your profile, JWORLD ID, settings, orders and payments.'],
+ support:['Support','Get help, contact support and find answers.'],
+ search:['Search','Search products, movies, books, apps, users and communities.'],
+ chat:['Chat','Open your JWORLD messages and conversations.'],
+ notifications:['Notifications','View mentions, updates, purchases and community notifications.'],
+ downloads:['Downloads','Your downloaded movies, music, apps, books and files.'],
+ cart:['Cart','Review items you want to purchase.'],
+ menu:['JWORLD Menu','Choose any JWORLD section from the platform menu.'],
+ creator:['Creator / Seller','Create your creator profile, upload content and manage sales.'],
+ 'quick-access':['Quick Access','Orders, downloads, wishlist, watchlist, playlists, messages, settings and payments.'],
+ about:['About JWORLD','One platform • Endless worlds.'],services:['Services','Explore JWORLD services and platform features.'],contact:['Contact','Contact the JWORLD team.'],privacy:['Privacy Policy','Review JWORLD privacy information.'],terms:['Terms of Service','Review JWORLD terms and conditions.']
+};
+function openSection(key){if(key==='home'){goHome();return} const d=data[key]||['JWORLD','Section']; document.getElementById('home').style.display='none';document.getElementById('section').style.display='block';document.getElementById('title').textContent=d[0];document.getElementById('sub').textContent=d[1];const c=document.getElementById('content');c.innerHTML='';['Explore','Featured','Your JWORLD','Recent activity'].forEach((x,i)=>{const p=document.createElement('div');p.className='panel';p.innerHTML=`<h3>${x}</h3><p>${d[1]}</p><button class="btn" onclick="alert('This ${x.toLowerCase()} action is ready for the next feature build.')">Open</button>`;c.appendChild(p)});history.pushState({key},'',`#${key}`)}
+function goHome(){document.getElementById('section').style.display='none';document.getElementById('home').style.display='flex';history.pushState({},'',location.pathname)}
+document.querySelectorAll('.hotspot').forEach(b=>b.addEventListener('click',()=>openSection(b.dataset.section)));
+window.addEventListener('popstate',()=>{location.hash?openSection(location.hash.slice(1)):goHome()});
+if(location.hash)openSection(location.hash.slice(1));
+</script>
+</body></html>
