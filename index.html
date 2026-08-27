@@ -19,7 +19,7 @@ body{width:100vw;height:100vh;height:100dvh}
 .hot{position:absolute;z-index:5;background:transparent;border:0;padding:0;margin:0;cursor:pointer;border-radius:6px;touch-action:manipulation}
 .hot:focus-visible{outline:2px solid #ffd21a;outline-offset:2px}
 /* header */
-.h-search{left:25.8%;top:5%;width:42%;height:70%}.h-chat{left:72.5%;top:5%;width:4%;height:80%}.h-notify{left:77.8%;top:5%;width:4%;height:80%}.h-download{left:82.8%;top:5%;width:4%;height:80%}.h-cart{left:87.8%;top:5%;width:4%;height:80%}.h-profile{left:92%;top:2%;width:7%;height:90%}
+.h-menu{left:0%;top:0%;width:8%;height:100%;z-index:20}.h-search{left:25.8%;top:5%;width:42%;height:70%}.h-chat{left:72.5%;top:5%;width:4%;height:80%}.h-notify{left:77.8%;top:5%;width:4%;height:80%}.h-download{left:82.8%;top:5%;width:4%;height:80%}.h-cart{left:87.8%;top:5%;width:4%;height:80%}.h-profile{left:92%;top:2%;width:7%;height:90%}
 /* sidebar */
 .s-home{left:2%;top:1.2%;width:95%;height:4.4%}.s-market{left:2%;top:6%;width:95%;height:4.4%}.s-movies{left:2%;top:10.6%;width:95%;height:4.4%}.s-apps{left:2%;top:15.2%;width:95%;height:4.4%}.s-music{left:2%;top:19.8%;width:95%;height:4.4%}.s-books{left:2%;top:24.4%;width:95%;height:4.4%}.s-files{left:2%;top:29%;width:95%;height:4.4%}.s-community{left:2%;top:33.7%;width:95%;height:4.4%}.s-news{left:2%;top:38.3%;width:95%;height:4.4%}.s-library{left:2%;top:42.9%;width:95%;height:4.4%}.s-account{left:2%;top:47.5%;width:95%;height:4.4%}.s-support{left:2%;top:52.1%;width:95%;height:4.4%}.s-premium{left:5%;top:59.5%;width:90%;height:22%}
 /* main */
@@ -42,13 +42,25 @@ body{width:100vw;height:100vh;height:100dvh}
   .header img{object-fit:fill}
   .footer img{object-fit:fill}
 }
+.menu-drawer{position:fixed;inset:0;z-index:100;display:none;background:rgba(0,0,0,.72)}
+.menu-drawer.open{display:block}
+.menu-card{position:absolute;left:0;top:0;height:100%;width:min(320px,82vw);background:#06111a;border-right:1px solid #d9a900;box-shadow:8px 0 30px rgba(0,0,0,.55);padding:18px 14px;overflow:auto}
+.menu-card h2{margin:8px 8px 18px;color:#f4b915;font-size:24px}
+.menu-card button{width:100%;margin:4px 0;padding:13px 12px;text-align:left;border:1px solid #17405d;border-radius:8px;background:#0a1b27;color:#fff;font-size:15px}
+.menu-card button:hover,.menu-card button:active{border-color:#f4b915;background:#122637}
+.menu-close{position:absolute;right:10px;top:10px;width:38px!important;height:38px;padding:0!important;text-align:center!important;font-size:20px!important}
+.section-modal{position:fixed;inset:0;z-index:110;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.78);padding:20px}
+.section-modal.open{display:flex}.section-box{width:min(520px,94vw);max-height:80vh;overflow:auto;background:#07131d;border:1px solid #d8a800;border-radius:14px;padding:24px;box-shadow:0 15px 50px rgba(0,0,0,.7)}
+.section-box h2{margin:0 0 10px;color:#f4b915}.section-box p{color:#cbd5dc;line-height:1.5}.section-box button{border:1px solid #d8a800;background:#f4b915;color:#111;border-radius:8px;padding:10px 18px;font-weight:700}
 </style>
 </head>
 <body>
+<div class="menu-drawer" id="menuDrawer"><div class="menu-card"><button class="menu-close" id="menuClose" aria-label="Close menu">×</button><h2>JWORLD</h2><button data-menu="Home">⌂ Home</button><button data-menu="Marketplace">🛒 Marketplace</button><button data-menu="Movies & Series">🎬 Movies & Series</button><button data-menu="Apps & Games">🎮 Apps & Games</button><button data-menu="Music">♫ Music</button><button data-menu="Books">▣ Books</button><button data-menu="Files">▰ Files</button><button data-menu="Communities & Chat">👥 Communities & Chat</button><button data-menu="News">▤ News</button><button data-menu="Library">▱ Library</button><button data-menu="Account">♙ Account</button><button data-menu="Support">? Support</button><button data-menu="JWORLD Premium">♛ JWORLD Premium</button></div></div>
+<div class="section-modal" id="sectionModal"><div class="section-box"><h2 id="sectionTitle">JWORLD</h2><p id="sectionText"></p><button id="sectionClose">Close</button></div></div>
 <div class="page">
   <div class="header">
     <img src="assets/header.png" alt="JWORLD header">
-    <button class="hot h-search" data-section="Search" aria-label="Search"></button><button class="hot h-chat" data-section="Chat" aria-label="Chat"></button><button class="hot h-notify" data-section="Notifications" aria-label="Notifications"></button><button class="hot h-download" data-section="Downloads" aria-label="Downloads"></button><button class="hot h-cart" data-section="Cart" aria-label="Cart"></button><button class="hot h-profile" data-section="Account" aria-label="Account"></button>
+    <button class="hot h-menu" data-action="menu" aria-label="Open menu"></button><button class="hot h-search" data-section="Search" aria-label="Search"></button><button class="hot h-chat" data-section="Chat" aria-label="Chat"></button><button class="hot h-notify" data-section="Notifications" aria-label="Notifications"></button><button class="hot h-download" data-section="Downloads" aria-label="Downloads"></button><button class="hot h-cart" data-section="Cart" aria-label="Cart"></button><button class="hot h-profile" data-section="Account" aria-label="Account"></button>
   </div>
   <div class="body">
     <aside class="side">
@@ -73,13 +85,27 @@ body{width:100vw;height:100vh;height:100dvh}
   <div class="footer"><img src="assets/footer.png" alt="JWORLD footer"></div>
 </div>
 <script>
-const page=document.querySelector('.page');
-function go(section){
-  if(section==='Home'){location.hash='';return;}
-  const title=encodeURIComponent(section); location.hash=title;
-  alert(section+' — ready to open');
+const drawer=document.getElementById('menuDrawer');
+const modal=document.getElementById('sectionModal');
+const titleEl=document.getElementById('sectionTitle');
+const textEl=document.getElementById('sectionText');
+function openSection(section){
+  if(section==='Home'){location.hash=''; modal.classList.remove('open'); return;}
+  location.hash=encodeURIComponent(section);
+  titleEl.textContent=section;
+  textEl.textContent=section+' is ready to open in JWORLD. This clickable home-screen control is now connected.';
+  modal.classList.add('open');
 }
-document.querySelectorAll('.hot').forEach(b=>b.addEventListener('click',()=>go(b.dataset.section||'Home')));
+document.querySelectorAll('.hot').forEach(b=>b.addEventListener('click',()=>{
+  if(b.dataset.action==='menu'){drawer.classList.add('open'); return;}
+  openSection(b.dataset.section||'Home');
+}));
+document.querySelectorAll('[data-menu]').forEach(b=>b.addEventListener('click',()=>{drawer.classList.remove('open');openSection(b.dataset.menu);}));
+document.getElementById('menuClose').addEventListener('click',()=>drawer.classList.remove('open'));
+drawer.addEventListener('click',e=>{if(e.target===drawer)drawer.classList.remove('open')});
+document.getElementById('sectionClose').addEventListener('click',()=>modal.classList.remove('open'));
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+
 </script>
 </body>
 </html>
