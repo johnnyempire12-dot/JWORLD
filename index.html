@@ -132,7 +132,6 @@ const titleEl=document.getElementById('sectionTitle');
 const textEl=document.getElementById('sectionText');
 function openSection(section){
   if(section==='Home'){location.hash=''; modal.classList.remove('open'); marketplaceView.classList.remove('open'); marketplaceView.setAttribute('aria-hidden','true'); return;}
-  if(section==='Music'){ location.href='sections/music.html'; return;}
   if(section==='Marketplace'){modal.classList.remove('open'); marketplaceView.classList.add('open'); marketplaceView.setAttribute('aria-hidden','false'); location.hash='Marketplace'; renderProducts(); return;}
   if(section==='Apps & Games'){modal.classList.remove('open'); marketplaceView.classList.remove('open'); moviesView.classList.add('open'); moviesView.setAttribute('aria-hidden','false'); location.hash='Apps%20%26%20Games'; renderApps(); return;}
   location.hash=encodeURIComponent(section);
